@@ -1,5 +1,5 @@
 // =====================================================
-// 1. DATOS DEL NEGOCIO 
+// 1. DATOS DEL NEGOCIO
 // =====================================================
 const planes = [
   {
@@ -49,25 +49,24 @@ function mostrarPlanes() {
     tarjeta.classList.add("producto");
 
     tarjeta.innerHTML = `
-      <a href="detalle-plan.html">
-        <img src="${plan.imagen}" alt="${plan.nombre}">
-      </a>
+      <img src="${plan.imagen}" alt="${plan.nombre}">
       <div class="producto-contenido">
         <p class="subtitulo etiqueta-plan">${plan.etiqueta}</p>
         <h3>${plan.nombre}</h3>
         <p class="descripcion-plan">${plan.descripcion}</p>
         <p class="precio">$${plan.precio.toLocaleString("es-CL")}</p>
-        <button class="boton" data-id="${plan.id}">Agendar</button>
+        <button class="boton" data-id="${plan.id}" style="width: 100%; margin-top: 10px;">Agendar</button>
       </div>
     `;
     grillaProductos.appendChild(tarjeta);
   });
 
+  // Evento directo: Guarda en LocalStorage y redirige al carrito
   document.querySelectorAll(".producto button").forEach((boton) => {
     boton.addEventListener("click", () => {
       const id = Number(boton.dataset.id);
       agregarAlCarrito(id);
-      alert(`¡Éxito! Has agendado el plan. Revisa 'Mis Horas'.`);
+      window.location.href = "carrito.html";
     });
   });
 }
@@ -77,20 +76,7 @@ if (grillaProductos) {
 }
 
 // =====================================================
-// 3. LÓGICA EXCLUSIVA PARA DETALLE-PLAN.HTML
-// =====================================================
-const btnDetalle = document.querySelector(".btn-agendar-detalle");
-
-if (btnDetalle) {
-  btnDetalle.addEventListener("click", () => {
-    const id = Number(btnDetalle.dataset.id);
-    agregarAlCarrito(id);
-    alert(`¡Éxito! Cita agendada. Revisa 'Mis Horas'.`);
-  });
-}
-
-// =====================================================
-// 4. LÓGICA DEL CARRITO (MIS HORAS) CON LOCALSTORAGE
+// 3. LÓGICA DEL CARRITO (MIS HORAS) CON LOCALSTORAGE
 // =====================================================
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
@@ -115,7 +101,7 @@ function agregarAlCarrito(idProducto) {
 }
 
 // =====================================================
-// 5. ACTUALIZACIÓN VISUAL DEL CARRITO Y CONTADORES
+// 4. ACTUALIZACIÓN VISUAL DEL CARRITO Y CONTADORES
 // =====================================================
 function actualizarCarrito() {
   const contadorCarrito = document.getElementById("contador-carrito");
@@ -136,23 +122,27 @@ function actualizarCarrito() {
   carrito.forEach((item, index) => {
     const elemento = document.createElement("div");
     elemento.classList.add("item-carrito");
-
-    elemento.innerHTML = `
-      <div>
-        <strong>${item.nombre}</strong>
-        <div class="control-cantidad">
-          <button data-id="${item.id}" class="btn-cantidad btn-restar">-</button>
-          <span>${item.cantidad}</span>
-          <button data-id="${item.id}" class="btn-cantidad btn-sumar">+</button>
+  
+    // Inyectamos la imagen junto a la información
+      elemento.innerHTML = `
+        <div style="display: flex; gap: 20px; align-items: center;">
+          <img src="${item.imagen}" alt="${item.nombre}" class="img-carrito">
+          <div>
+            <strong>${item.nombre}</strong>
+            <div class="control-cantidad">
+              <button data-id="${item.id}" class="btn-cantidad btn-restar">-</button>
+              <span>${item.cantidad}</span>
+              <button data-id="${item.id}" class="btn-cantidad btn-sumar">+</button>
+            </div>
+          </div>
         </div>
-      </div>
-      <div style="text-align: right;">
-        <p style="margin-bottom: 10px; font-weight: bold;">Subtotal: $${(item.precio * item.cantidad).toLocaleString("es-CL")}</p>
-        <button data-index="${index}" class="btn-eliminar">Eliminar</button>
-      </div>
-    `;
-    listaCarrito.appendChild(elemento);
-  });
+        <div style="text-align: right;">
+          <p style="margin-bottom: 10px; font-weight: bold;">Subtotal: $${(item.precio * item.cantidad).toLocaleString("es-CL")}</p>
+          <button data-index="${index}" class="btn-eliminar">Eliminar</button>
+        </div>
+      `;
+      listaCarrito.appendChild(elemento);
+    });
 
   // Evento para sumar cantidad
   document.querySelectorAll(".btn-sumar").forEach((boton) => {
@@ -167,7 +157,7 @@ function actualizarCarrito() {
     });
   });
 
-  // Evento para restar cantidad (mínimo 1)
+  // Evento para restar cantidad
   document.querySelectorAll(".btn-restar").forEach((boton) => {
     boton.addEventListener("click", () => {
       const id = Number(boton.dataset.id);
@@ -180,7 +170,7 @@ function actualizarCarrito() {
     });
   });
 
-  // Evento para eliminar ítem completo
+  // Evento para eliminar ítem
   document.querySelectorAll(".btn-eliminar").forEach((boton) => {
     boton.addEventListener("click", () => {
       const index = Number(boton.dataset.index);
@@ -190,6 +180,7 @@ function actualizarCarrito() {
     });
   });
 
+  // Actualización de montos
   const subtotalCarrito = document.getElementById("subtotal-carrito");
   const totalCarrito = document.getElementById("total-carrito");
   const montoTotal = carrito.reduce((acc, item) => acc + (item.precio * item.cantidad), 0);
@@ -208,7 +199,7 @@ if (vaciarCarritoBtn) {
 }
 
 // =====================================================
-// 6. VALIDACIÓN DE CONTRATACIÓN EN EL CARRITO
+// 5. VALIDACIÓN DE CONTRATACIÓN EN EL CARRITO
 // =====================================================
 const btnContratar = document.getElementById("btn-contratar");
 if (btnContratar) {
@@ -217,13 +208,12 @@ if (btnContratar) {
       alert("Error: Tu carrito está vacío. Agrega al menos un plan antes de continuar.");
       return;
     }
-
     const confirmar = confirm("¿Estás seguro de que deseas agendar estas horas?");
     if (confirmar) {
-      alert("¡Contratación confirmada! Redirigiendo al inicio de sesión...");
       window.location.href = "login.html";
     }
   });
 }
 
+// Ejecución inicial
 actualizarCarrito();
