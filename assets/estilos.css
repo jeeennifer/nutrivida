@@ -9,6 +9,7 @@
 
 html {
   scroll-behavior: smooth;
+  height: 100%;
 }
 
 body {
@@ -16,6 +17,13 @@ body {
   line-height: 1.6;
   background: #ffffff;
   color: #333333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1; /* Obliga al footer a quedarse abajo */
 }
 
 .contenedor {
@@ -82,9 +90,8 @@ nav a:hover {
 }
 
 /* =========================
-   HERO
+   HERO (PORTADA)
    ========================= */
-
 .hero {
   background: #f4f9f5;
   padding: 60px 0;
@@ -97,19 +104,19 @@ nav a:hover {
 }
 
 .hero-imagen {
-  flex: 1; /* Toma la mitad del espacio */
+  flex: 1;
 }
 
 .hero-imagen img {
   width: 100%;
-  border-radius: 20px; /* Bordes redondeados para que se vea moderno */
+  border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   object-fit: cover;
   display: block;
 }
 
 .hero-contenido {
-  flex: 1; /* Toma la otra mitad del espacio */
+  flex: 1;
 }
 
 .hero h2 {
@@ -160,6 +167,7 @@ nav a:hover {
   border-radius: 6px;
   cursor: pointer;
   font-weight: bold;
+  text-align: center;
 }
 
 .boton-ingresar {
@@ -182,7 +190,7 @@ nav a:hover {
 }
 
 /* =========================
-   GRILLA DE PLANES (PRODUCTOS)
+   GRILLA DE PLANES (CATÁLOGO)
    ========================= */
 .grilla-productos {
   display: grid;
@@ -190,9 +198,6 @@ nav a:hover {
   gap: 30px;
 }
 
-/* =========================
-   TARJETAS DE PLANES (PRODUCTO)
-   ========================= */
 .producto {
   border: 1px solid #dddddd;
   border-radius: 12px;
@@ -207,6 +212,11 @@ nav a:hover {
   width: 100%;
   height: 220px;
   object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.producto img:hover {
+  transform: scale(1.03);
 }
 
 .producto-contenido {
@@ -227,6 +237,114 @@ nav a:hover {
   color: #1e5631;
   margin-top: auto;
   margin-bottom: 15px;
+}
+
+.etiqueta-plan {
+  font-size: 0.8rem;
+  margin-bottom: 5px;
+}
+
+.descripcion-plan {
+  margin-bottom: 15px;
+}
+
+
+
+/* =========================
+   DETALLE DE PLAN
+   ========================= */
+.enlace-volver {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: #3d8c53;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.detalle-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: start;
+}
+
+.detalle-imagen img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.precio-detalle {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #1e5631;
+  margin: 15px 0;
+}
+
+.detalle-incluye {
+  background: #f4f9f5;
+  padding: 20px;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+.detalle-incluye ul {
+  list-style-position: inside;
+  margin-top: 10px;
+}
+
+/* =========================
+   CARRITO DE COMPRAS
+   ========================= */
+.carrito-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.item-carrito {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border: 1px solid #eeeeee;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.item-carrito strong {
+  font-size: 1.2rem;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.btn-eliminar {
+  background: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.carrito-resumen {
+  background: #f4f9f5;
+  padding: 30px;
+  border-radius: 12px;
+}
+
+.carrito-resumen h3 {
+  margin-bottom: 20px;
+}
+
+.precio-total {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #1e5631;
+  margin: 15px 0;
+  border-top: 1px solid #dddddd;
+  padding-top: 15px;
 }
 
 /* =========================
@@ -269,21 +387,37 @@ footer {
     flex-direction: column;
     padding: 20px 0;
   }
-
   nav ul {
     flex-wrap: wrap;
     justify-content: center;
   }
-
-  .hero h2 {
-    font-size: 2rem;
-  }
-
-  .grilla-productos {
+  .hero-grid, .grilla-productos, .detalle-grid, .carrito-grid, .footer-grid {
     grid-template-columns: 1fr;
   }
-
-  .footer-grid {
-    grid-template-columns: 1fr;
+  .hero-imagen {
+    order: -1; /* Mueve la imagen arriba en celular */
   }
+}
+
+/* compra carrito*/
+
+.control-cantidad {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.btn-cantidad {
+  background: #eeeeee;
+  border: 1px solid #cccccc;
+  padding: 4px 12px;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.btn-cantidad:hover {
+  background: #dddddd;
 }
