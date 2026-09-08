@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NutriVida - Clínica Nutricional</title>
+  <title>Tu Carrito - NutriVida</title>
   <link rel="stylesheet" href="assets/estilos.css">
 </head>
 <body>
@@ -30,22 +30,25 @@
     </div>
   </header>
 
-  <main>
-    <section id="inicio" class="hero">
-      <div class="contenedor hero-grid">
-        <div class="hero-contenido">
-          <h2>Nutrición basada en ciencia y resultados.</h2>
-          <p>Gestiona tus planes de alimentación personalizados y reserva tus evaluaciones clínicas de forma 100% digital.</p>
-          <div class="hero-botones">
-            <a href="planes.html" class="boton">Ver planes</a>
-            <a href="nosotros.html" class="boton boton-secundario">Conócenos</a>
-          </div>
-        </div>
-        <div class="hero-imagen">
-          <img src="assets/img/hero-inicio2.png" alt="Plato de comida saludable NutriVida">
-        </div>
-      </div>
-    </section>
+  <main class="contenedor seccion">
+    <div class="titulos-seccion">
+      <h2>Tu carrito</h2>
+    </div>
+
+    <div class="carrito-grid">
+      <div id="lista-carrito" class="carrito-items"></div>
+
+     <aside class="carrito-resumen">
+        <h3>Resumen</h3>
+        <p>Subtotal: $<span id="subtotal-carrito">0</span></p>
+        <p class="precio-total">Total: $<span id="total-carrito">0</span></p>
+        
+        <button id="vaciar-carrito" class="boton boton-secundario" style="width: 100%; margin-bottom: 15px;">Vaciar carrito</button>
+        <!-- Reemplazamos el enlace "a" por un botón "button" -->
+        <button id="btn-contratar" class="boton" style="width: 100%;">Contratar planes</button>
+        <small style="display: block; margin-top: 10px; color: #555;">Deberás iniciar sesión para completar la contratación.</small>
+      </aside>
+    </div>
   </main>
 
   <footer>
@@ -71,7 +74,7 @@
       </div>
     </div>
   </footer>
-  
+
   <script src="js/app.js"></script>
 </body>
 </html>

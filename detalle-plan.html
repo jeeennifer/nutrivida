@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NutriVida - Clínica Nutricional</title>
+  <title>Detalle de Plan - NutriVida</title>
   <link rel="stylesheet" href="assets/estilos.css">
 </head>
 <body>
@@ -30,22 +30,33 @@
     </div>
   </header>
 
-  <main>
-    <section id="inicio" class="hero">
-      <div class="contenedor hero-grid">
-        <div class="hero-contenido">
-          <h2>Nutrición basada en ciencia y resultados.</h2>
-          <p>Gestiona tus planes de alimentación personalizados y reserva tus evaluaciones clínicas de forma 100% digital.</p>
-          <div class="hero-botones">
-            <a href="planes.html" class="boton">Ver planes</a>
-            <a href="nosotros.html" class="boton boton-secundario">Conócenos</a>
-          </div>
-        </div>
-        <div class="hero-imagen">
-          <img src="assets/img/hero-inicio2.png" alt="Plato de comida saludable NutriVida">
-        </div>
+  <main class="contenedor seccion">
+    <a href="planes.html" class="enlace-volver">← Volver a planes</a>
+    
+    <div class="detalle-grid">
+      <div class="detalle-imagen">
+        <img src="assets/img/plan-consulta.jpg" alt="Consulta nutricional">
       </div>
-    </section>
+      
+      <div class="detalle-info">
+        <p class="subtitulo">Nutrición Deportiva</p>
+        <h2>Consulta Deportiva con Ana Soto</h2>
+        <p class="precio-detalle">$25.000 c/u</p>
+        <p>Primera evaluación completa enfocada en rendimiento físico y masa muscular, diseñada para alcanzar tus metas deportivas.</p>
+        
+        <div class="detalle-incluye">
+          <strong>Incluye</strong>
+          <ul>
+            <li>Evaluación antropométrica</li>
+            <li>Plan de alimentación deportivo</li>
+            <li>Informe con recomendaciones</li>
+            <li>1 control de seguimiento</li>
+          </ul>
+        </div>
+        
+        <button class="boton btn-agendar-detalle" data-id="1">Agendar cita</button>
+      </div>
+    </div>
   </main>
 
   <footer>
@@ -71,7 +82,7 @@
       </div>
     </div>
   </footer>
-  
+
   <script src="js/app.js"></script>
 </body>
 </html>
