@@ -348,37 +348,27 @@ nav a:hover {
 }
 
 /* =========================
-   FOOTER
+   FOOTER MINIMALISTA
    ========================= */
-footer {
-  background: #f8f9fa;
-  border-top: 1px solid #eeeeee;
-  padding: 50px 0;
-  color: #555555;
+.footer-minimalista {
+  background-color: #f4f9f5; 
+  padding: 50px 20px;        
+  text-align: center;
+  border-top: 1px solid #eeeeee; 
+  margin-top: 40px;
 }
 
-.footer-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
+.footer-minimalista p {
+  color: #000000;            
+  font-size: 1rem;
+  margin: 0 0 10px 0;       
+  font-weight: normal;
 }
 
-.footer-columna h3, .footer-columna strong {
-  color: #222222;
-  margin-bottom: 15px;
-  display: block;
-  font-size: 1.1rem;
+/* Le quitamos el margen a la última línea para que quede perfectamente centrado */
+.footer-minimalista p:last-child {
+  margin-bottom: 0;
 }
-
-.footer-columna ul {
-  list-style: none;
-  padding: 0;
-}
-
-.footer-columna ul li {
-  margin-bottom: 12px;
-}
-
 /* =========================
    RESPONSIVE
    ========================= */
@@ -429,4 +419,52 @@ footer {
   object-fit: cover;
   border-radius: 8px;
   border: 1px solid #eeeeee;
+}
+
+/* =========================
+   PÁGINA NOSOTROS
+   ========================= */
+.seccion-texto {
+  max-width: 800px;
+  margin: 0 auto 50px auto;
+  text-align: center;
+  font-size: 1.1rem;
+  color: #555;
+}
+
+.grilla-equipo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+  margin-bottom: 60px;
+}
+
+.tarjeta-equipo {
+  background: #f4f9f5;
+  border: 1px solid #eeeeee;
+  border-radius: 12px;
+  padding: 30px 20px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+
+.foto-perfil {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+  border: 3px solid #3d8c53;
+}
+
+.tarjeta-equipo h3 {
+  margin-bottom: 5px;
+  color: #222;
+}
+
+.tarjeta-equipo p {
+  color: #1e5631;
+  font-weight: bold;
+  font-size: 0.9rem;
 }
