@@ -369,6 +369,67 @@ nav a:hover {
 .footer-minimalista p:last-child {
   margin-bottom: 0;
 }
+
+/* =========================
+   FORMULARIOS (Login y Contacto)
+   ========================= */
+
+/* El contenedor blanco que abraza al formulario */
+.form-contenedor {
+  max-width: 500px;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 12px;
+  border: 1px solid #eeeeee;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+
+/* Espaciado entre cada campo (ej: entre Correo y Contraseña) */
+.grupo-form {
+  margin-bottom: 20px;
+}
+
+/* Estilo para los textos (labels) arriba de cada input */
+.grupo-form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #222222;
+}
+
+/* Estilo para las cajas de texto e inputs */
+.grupo-form input,
+.grupo-form textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.3s ease;
+}
+
+/* Solo para el textarea (mensaje), para que crezca hacia abajo y no hacia los lados */
+.grupo-form textarea {
+  resize: vertical;
+}
+
+/* Efecto cuando el usuario hace clic dentro de la caja de texto */
+.grupo-form input:focus,
+.grupo-form textarea:focus {
+  outline: none;
+  border-color: #3d8c53; /* Verde principal de NutriVida */
+}
+
+/* Estilo para los mensajes de error de validaciones.js */
+.mensaje-error {
+  display: block;
+  color: #ff4d4d;
+  font-size: 0.85rem;
+  margin-top: 5px;
+}
+
 /* =========================
    RESPONSIVE
    ========================= */
