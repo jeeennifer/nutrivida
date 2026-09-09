@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agendar Cita - NutriVida</title>
+  <link rel="stylesheet" href="assets/estilos.css">
+</head>
+<body>
+
+  <header>
+    <div class="contenedor encabezado">
+      <a href="index.html" class="logo">
+        <img src="assets/img/logo.png" alt="NutriVida" class="logo-img">
+      </a>
+      <nav aria-label="Navegación principal">
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="planes.html">Planes</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+      <div class="acciones-header">
+        <a href="carrito.html" class="btn-carrito" style="text-decoration: none;">
+          Mis Horas (<span id="contador-carrito">0</span>)
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="contenedor seccion">
+    <div class="form-contenedor">
+      <div class="titulos-seccion">
+        <h2>Agenda tu cita</h2>
+        <p>Elige el día y la hora en que quieres asistir.</p>
+      </div>
+
+      <!-- Resumen de lo que se va a agendar, llenado por agendar-cita.js -->
+      <div id="lista-resumen-cita" class="resumen-cita"></div>
+
+      <form id="form-agendar-cita" class="formulario" novalidate>
+        <div class="grupo-form">
+          <label for="fecha-cita">Fecha de la cita:</label>
+          <!--
+            input type="date" dibuja un calendario nativo del propio
+            navegador (sin instalar ninguna librería), por lo que es
+            perfectamente adecuado para el nivel de este curso.
+          -->
+          <input type="date" id="fecha-cita">
+          <span id="error-fecha-cita" class="mensaje-error" style="display: none;"></span>
+        </div>
+
+        <div class="grupo-form">
+          <label for="hora-cita">Horario:</label>
+          <select id="hora-cita">
+            <option value="">Selecciona un horario</option>
+            <option value="09:00">09:00</option>
+            <option value="10:00">10:00</option>
+            <option value="11:00">11:00</option>
+            <option value="12:00">12:00</option>
+            <option value="15:00">15:00</option>
+            <option value="16:00">16:00</option>
+            <option value="17:00">17:00</option>
+          </select>
+          <span id="error-hora-cita" class="mensaje-error" style="display: none;"></span>
+        </div>
+
+        <button type="submit" class="boton" style="width: 100%; margin-top: 15px;">Confirmar cita</button>
+        <p id="mensaje-agendar" class="mensaje-formulario"></p>
+      </form>
+    </div>
+  </main>
+
+  <footer class="footer-minimalista">
+    <div class="contenedor">
+      <p>NutriVida &middot; Clínica de Asesoría Nutricional &middot; Temuco, Región de La Araucanía</p>
+      <p>Desarrollado por: Vicente, Michael y Jennifer &middot; DSY1104</p>
+    </div>
+  </footer>
+
+  <script src="js/datos.js"></script>
+  <script src="js/validaciones.js"></script>
+  <script src="js/carrito.js"></script>
+  <script src="js/agendar-cita.js"></script>
+</body>
+</html>

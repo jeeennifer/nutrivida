@@ -13,7 +13,7 @@
       <a href="index.html" class="logo">
         <img src="assets/img/logo.png" alt="NutriVida" class="logo-img">
       </a>
-     <nav aria-label="Navegación principal">
+      <nav aria-label="Navegación principal">
         <ul>
           <li><a href="index.html">Inicio</a></li>
           <li><a href="planes.html">Planes</a></li>
@@ -47,14 +47,29 @@
         </div>
       </div>
     </section>
+
+    <!-- Planes destacados: la vista "Home" del mockup exige mostrar
+         una lista de productos (imagen, nombre, precio), además del
+         listado completo que ya vive en planes.html -->
+    <section class="seccion contenedor">
+      <div class="titulos-seccion">
+        <p class="subtitulo">PLANES DESTACADOS</p>
+        <h2>Algunos de nuestros planes</h2>
+      </div>
+      <div id="grilla-destacados" class="grilla-productos"></div>
+    </section>
   </main>
 
-<footer class="footer-minimalista">
+  <footer class="footer-minimalista">
     <div class="contenedor">
       <p>NutriVida &middot; Clínica de Asesoría Nutricional &middot; Temuco, Región de La Araucanía</p>
       <p>Desarrollado por: Vicente, Michael y Jennifer &middot; DSY1104</p>
     </div>
   </footer>
-  <script src="js/app.js"></script>
+
+  <!-- Cada script tiene una sola responsabilidad: datos, carrito, catálogo -->
+  <script src="js/datos.js"></script>
+  <script src="js/carrito.js"></script>
+  <script src="js/catalogo.js"></script>
 </body>
 </html>

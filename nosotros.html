@@ -37,49 +37,54 @@
       <p class="subtitulo">Conoce a quienes dan vida a NutriVida</p>
     </div>
 
-    <!-- Misión -->
     <div class="seccion-texto">
       <p><strong>Nuestra Misión:</strong> Empoderar a las personas para que transformen sus vidas a través de la nutrición consciente, basada en ciencia. Buscamos democratizar el acceso a asesorías clínicas de calidad, brindando un acompañamiento cercano y 100% personalizado mediante nuestra plataforma digital.</p>
     </div>
 
-    <!-- Equipo Clínico -->
+    <!-- Equipo Clínico: usamos un círculo con iniciales en vez de fotos,
+         ya que no contábamos con fotografías reales del equipo -->
     <h3 style="text-align: center;">Nuestro Equipo Clínico</h3>
     <div class="grilla-equipo">
       <div class="tarjeta-equipo">
-        <img src="assets/img/perfil1.jpg" alt="Ana Soto" class="foto-perfil">
+        <div class="foto-perfil avatar-iniciales">AS</div>
         <h3>Ana Soto</h3>
         <p>Especialista en Nutrición Deportiva</p>
       </div>
       <div class="tarjeta-equipo">
-        <img src="assets/img/perfil2.jpg" alt="Matías Reyes" class="foto-perfil">
+        <div class="foto-perfil avatar-iniciales">MR</div>
         <h3>Matías Reyes</h3>
         <p>Especialista en Pérdida de Peso</p>
       </div>
       <div class="tarjeta-equipo">
-        <img src="assets/img/perfil3.jpg" alt="Valentina García" class="foto-perfil">
+        <div class="foto-perfil avatar-iniciales">VG</div>
         <h3>Valentina García</h3>
         <p>Especialista en Dietas Basadas en Plantas</p>
       </div>
       <div class="tarjeta-equipo">
-        <img src="assets/img/perfil4.jpg" alt="Luis Pérez" class="foto-perfil">
+        <div class="foto-perfil avatar-iniciales">LP</div>
         <h3>Luis Pérez</h3>
         <p>Especialista en Enfermedades Metabólicas</p>
       </div>
     </div>
 
-    <!-- Equipo de Desarrollo -->
-    <h3 style="text-align: center; margin-top: 20px;">Equipo de Desarrollo Web</h3>
+    <!--
+      Equipo de Desarrollo Web: antes esta sección repetía por error
+      los nombres de las nutricionistas de arriba (Ana Soto, Matías
+      Reyes, Valentina García). Se corrige para mostrar a quienes
+      realmente construyeron el sitio, igual que dice el footer.
+    -->
+    <h3 style="text-align: center; margin-top: 20px;">Equipo de Desarrollo Web (DSY1104)</h3>
     <div class="grilla-equipo" style="grid-template-columns: repeat(3, 1fr);">
       <div class="tarjeta-equipo" style="border-color: #cce0d2;">
-        <h3>Ana Soto</h3>
-        <p>Desarrolladora Web</p>
-      </div>
-      <div class="tarjeta-equipo" style="border-color: #cce0d2;">
-        <h3>Matías Reyes</h3>
+        <h3>Vicente</h3>
         <p>Desarrollador Web</p>
       </div>
       <div class="tarjeta-equipo" style="border-color: #cce0d2;">
-        <h3>Valentina García</h3>
+        <h3>Michael</h3>
+        <p>Desarrollador Web</p>
+      </div>
+      <div class="tarjeta-equipo" style="border-color: #cce0d2;">
+        <h3>Jennifer</h3>
         <p>Desarrolladora Web</p>
       </div>
     </div>
@@ -91,7 +96,8 @@
       <p>Desarrollado por: Vicente, Michael y Jennifer &middot; DSY1104</p>
     </div>
   </footer>
-  
-  <script src="js/app.js"></script>
+
+  <script src="js/datos.js"></script>
+  <script src="js/carrito.js"></script>
 </body>
 </html>

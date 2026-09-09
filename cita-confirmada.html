@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Planes - NutriVida</title>
+  <title>Cita Confirmada - NutriVida</title>
   <link rel="stylesheet" href="assets/estilos.css">
 </head>
 <body>
@@ -26,19 +26,15 @@
         <a href="carrito.html" class="btn-carrito" style="text-decoration: none;">
           Mis Horas (<span id="contador-carrito">0</span>)
         </a>
-        <a href="login.html" class="boton-ingresar">Ingresar</a>
       </div>
     </div>
   </header>
 
-  <main>
-    <section id="planes" class="seccion contenedor">
-      <div class="titulos-seccion">
-        <p class="subtitulo">NUESTROS PLANES</p>
-        <h2>Elige el que se adapta a ti</h2>
-      </div>
-      <div id="grilla-productos" class="grilla-productos"></div>
-    </section>
+  <main class="contenedor seccion">
+    <div class="confirmacion-caja">
+      <!-- cita-confirmada.js llena este bloque leyendo localStorage -->
+      <div id="detalle-cita-confirmada"></div>
+    </div>
   </main>
 
   <footer class="footer-minimalista">
@@ -50,6 +46,6 @@
 
   <script src="js/datos.js"></script>
   <script src="js/carrito.js"></script>
-  <script src="js/catalogo.js"></script>
+  <script src="js/cita-confirmada.js"></script>
 </body>
 </html>

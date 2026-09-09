@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nuevo/Editar Plan - Panel Administrador NutriVida</title>
+  <link rel="stylesheet" href="assets/estilos.css">
+</head>
+<body>
+
+  <header>
+    <div class="contenedor encabezado">
+      <a href="admin-home.html" class="logo">
+        <img src="assets/img/logo.png" alt="NutriVida" class="logo-img">
+      </a>
+      <nav aria-label="Navegación del administrador">
+        <ul>
+          <li><a href="admin-home.html">Inicio</a></li>
+          <li><a href="admin-planes.html">Planes</a></li>
+          <li><a href="admin-usuarios.html">Usuarios</a></li>
+          <li><a href="index.html">Ver sitio</a></li>
+        </ul>
+      </nav>
+      <div class="acciones-header">
+        <button id="cerrar-sesion-admin" class="boton boton-secundario">Cerrar sesión</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="contenedor seccion">
+    <a href="admin-planes.html" class="enlace-volver">&larr; Volver al listado</a>
+
+    <div class="form-contenedor">
+      <div class="titulos-seccion">
+        <h2 id="titulo-form-plan">Nuevo plan</h2>
+      </div>
+
+      <form id="form-plan" class="formulario" novalidate>
+        <div class="grupo-form">
+          <label for="nombre-plan">Nombre del plan:</label>
+          <input type="text" id="nombre-plan" maxlength="100">
+          <span id="error-nombre-plan" class="mensaje-error" style="display: none;"></span>
+        </div>
+
+        <div class="grupo-form">
+          <label for="etiqueta-plan">Categoría:</label>
+          <input type="text" id="etiqueta-plan" maxlength="50" placeholder="Ej: Nutrición Deportiva">
+          <span id="error-etiqueta-plan" class="mensaje-error" style="display: none;"></span>
+        </div>
+
+        <div class="grupo-form">
+          <label for="descripcion-plan">Descripción:</label>
+          <textarea id="descripcion-plan" rows="3" maxlength="500"></textarea>
+        </div>
+
+        <div class="grupo-form">
+          <label for="precio-plan">Precio (CLP):</label>
+          <input type="number" id="precio-plan" min="0" step="1">
+          <span id="error-precio-plan" class="mensaje-error" style="display: none;"></span>
+        </div>
+
+        <div class="grupo-form">
+          <label for="stock-plan">Cupos disponibles:</label>
+          <input type="number" id="stock-plan" min="0" step="1">
+          <span id="error-stock-plan" class="mensaje-error" style="display: none;"></span>
+        </div>
+
+        <button type="submit" class="boton" style="width: 100%; margin-top: 15px;">Guardar plan</button>
+        <p id="mensaje-plan" class="mensaje-formulario"></p>
+      </form>
+    </div>
+  </main>
+
+  <footer class="footer-minimalista">
+    <div class="contenedor">
+      <p>NutriVida &middot; Panel Administrador &middot; DSY1104</p>
+    </div>
+  </footer>
+
+  <script src="js/datos.js"></script>
+  <script src="js/validaciones.js"></script>
+  <script src="js/admin-auth.js"></script>
+  <script src="js/admin-plan-form.js"></script>
+</body>
+</html>

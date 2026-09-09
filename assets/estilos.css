@@ -431,8 +431,136 @@ nav a:hover {
 }
 
 /* =========================
-   RESPONSIVE
+   BLOG (reutiliza .producto/.producto-contenido
+   del catálogo para no duplicar estilos de tarjeta)
    ========================= */
+.fecha-blog {
+  font-size: 0.85rem;
+  color: #777777;
+  margin-bottom: 8px;
+}
+
+/* =========================
+   MENSAJES DE FORMULARIO SIN VENTANA EMERGENTE
+   -----------------------------------------------------
+   Reemplazan a alert()/confirm(): se muestran dentro de
+   la misma página, dentro de un <p id="mensaje-...">.
+   ========================= */
+.mensaje-formulario {
+  margin-top: 15px;
+  padding: 12px 16px;
+  border-radius: 6px;
+  font-weight: bold;
+  display: none; /* se muestra por JS solo cuando hay contenido */
+}
+
+.mensaje-formulario.exito {
+  display: block;
+  background: #e5f3e8;
+  color: #1e5631;
+  border: 1px solid #b6dcc0;
+}
+
+.mensaje-formulario.error {
+  display: block;
+  background: #fdeaea;
+  color: #a31515;
+  border: 1px solid #f3bcbc;
+}
+
+/* =========================
+   PÁGINA "AGENDAR CITA" Y "CITA CONFIRMADA"
+   ========================= */
+.resumen-cita {
+  background: #f4f9f5;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+}
+
+.resumen-cita .fila-resumen {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid #dddddd;
+}
+
+.resumen-cita .fila-resumen:last-child {
+  border-bottom: none;
+  font-weight: bold;
+  color: #1e5631;
+}
+
+.confirmacion-caja {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.confirmacion-caja .icono-exito {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+/* Circulo con iniciales, usado cuando no hay foto de perfil real */
+.avatar-iniciales {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #3d8c53;
+  color: white;
+  font-weight: bold;
+  font-size: 1.6rem;
+}
+
+/* =========================
+   PANEL ADMINISTRADOR (minimalista)
+   Reutiliza el mismo header/footer del resto del sitio;
+   solo se agregan estilos para tablas y acciones.
+   ========================= */
+.tabla-admin {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: white;
+}
+
+.tabla-admin th,
+.tabla-admin td {
+  text-align: left;
+  padding: 12px;
+  border-bottom: 1px solid #dddddd;
+}
+
+.tabla-admin th {
+  background: #f4f9f5;
+  color: #1e5631;
+}
+
+.fila-acciones {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.fila-acciones .boton {
+  padding: 6px 14px;
+  font-size: 0.9rem;
+}
+
+/* =========================
+   RESPONSIVE (3 puntos de quiebre: escritorio, tablet, celular)
+   ========================= */
+
+/* Tablet: de 3 a 2 columnas */
+@media (max-width: 1024px) {
+  .grilla-productos,
+  .grilla-equipo {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Celular: todo a 1 columna */
 @media (max-width: 768px) {
   .encabezado {
     flex-direction: column;
@@ -442,11 +570,19 @@ nav a:hover {
     flex-wrap: wrap;
     justify-content: center;
   }
-  .hero-grid, .grilla-productos, .detalle-grid, .carrito-grid, .footer-grid {
+  .hero-grid, .grilla-productos, .detalle-grid, .carrito-grid,
+  .footer-grid, .grilla-equipo {
     grid-template-columns: 1fr;
   }
   .hero-imagen {
     order: -1; /* Mueve la imagen arriba en celular */
+  }
+  .tabla-admin {
+    font-size: 0.85rem;
+  }
+  .tabla-admin th,
+  .tabla-admin td {
+    padding: 8px 6px;
   }
 }
 
