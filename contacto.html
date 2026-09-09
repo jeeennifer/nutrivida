@@ -38,28 +38,27 @@
         <p>Envíanos tus dudas y te responderemos a la brevedad.</p>
       </div>
 
-      <!-- novalidate apaga la validación por defecto del navegador para usar la nuestra en JS -->
       <form id="formulario-contacto" class="formulario" novalidate>
-        
         <div class="grupo-form">
           <label for="nombre-contacto">Nombre completo:</label>
           <input type="text" id="nombre-contacto" placeholder="Ej: Juan Pérez" autocomplete="name">
-          <span id="error-nombre-contacto" class="mensaje-error" style="display: none; color: #ff4d4d; font-size: 0.85rem; margin-top: 5px;"></span>
+          <span id="error-nombre-contacto" class="mensaje-error" style="display: none;"></span>
         </div>
 
         <div class="grupo-form">
           <label for="email-contacto">Correo Electrónico:</label>
           <input type="email" id="email-contacto" placeholder="ejemplo@correo.com" autocomplete="email">
-          <span id="error-email-contacto" class="mensaje-error" style="display: none; color: #ff4d4d; font-size: 0.85rem; margin-top: 5px;"></span>
+          <span id="error-email-contacto" class="mensaje-error" style="display: none;"></span>
         </div>
 
         <div class="grupo-form">
           <label for="mensaje-contacto">Tu mensaje:</label>
           <textarea id="mensaje-contacto" rows="5" placeholder="Escribe tu consulta aquí..."></textarea>
-          <span id="error-mensaje-contacto" class="mensaje-error" style="display: none; color: #ff4d4d; font-size: 0.85rem; margin-top: 5px;"></span>
+          <span id="error-mensaje-contacto" class="mensaje-error" style="display: none;"></span>
         </div>
 
         <button type="submit" class="boton" style="width: 100%; margin-top: 15px;">Enviar Mensaje</button>
+        <p id="mensaje-contacto-resultado" class="mensaje-formulario"></p>
       </form>
     </div>
   </main>
@@ -71,7 +70,8 @@
     </div>
   </footer>
 
-  <script src="js/app.js"></script>
+  <script src="js/carrito.js"></script>
   <script src="js/validaciones.js"></script>
+  <script src="js/contacto.js"></script>
 </body>
 </html>

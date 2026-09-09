@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Planes - Panel Administrador NutriVida</title>
+  <link rel="stylesheet" href="assets/estilos.css">
+</head>
+<body>
+
+  <header>
+    <div class="contenedor encabezado">
+      <a href="admin-home.html" class="logo">
+        <img src="assets/img/logo.png" alt="NutriVida" class="logo-img">
+      </a>
+      <nav aria-label="Navegación del administrador">
+        <ul>
+          <li><a href="admin-home.html">Inicio</a></li>
+          <li><a href="admin-planes.html">Planes</a></li>
+          <li><a href="admin-usuarios.html">Usuarios</a></li>
+          <li><a href="index.html">Ver sitio</a></li>
+        </ul>
+      </nav>
+      <div class="acciones-header">
+        <button id="cerrar-sesion-admin" class="boton boton-secundario">Cerrar sesión</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="contenedor seccion">
+    <div class="titulos-seccion">
+      <h2>Listado de planes</h2>
+    </div>
+
+    <a href="admin-plan-form.html" class="boton">+ Nuevo plan</a>
+
+    <table class="tabla-admin">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Categoría</th>
+          <th>Precio</th>
+          <th>Stock</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody id="cuerpo-tabla-planes"></tbody>
+    </table>
+  </main>
+
+  <footer class="footer-minimalista">
+    <div class="contenedor">
+      <p>NutriVida &middot; Panel Administrador &middot; DSY1104</p>
+    </div>
+  </footer>
+
+  <script src="js/datos.js"></script>
+  <script src="js/admin-auth.js"></script>
+  <script src="js/admin-planes.js"></script>
+</body>
+</html>
