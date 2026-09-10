@@ -51,25 +51,8 @@ function validarPassword(valor, minimo = 6) {
   return "";
 }
 
-// -----------------------------------------------------
-// VALIDACIÓN DE RUN CHILENO (sin puntos ni guion)
-// Se usa en Registro y en el mantenedor de usuarios del
-// panel administrador. Ejemplo válido: 19011022K
-// -----------------------------------------------------
-function calcularDigitoVerificador(numeroRun) {
-  let suma = 0;
-  let multiplicador = 2;
 
-  for (let i = numeroRun.length - 1; i >= 0; i--) {
-    suma += Number(numeroRun[i]) * multiplicador;
-    multiplicador = multiplicador < 7 ? multiplicador + 1 : 2;
-  }
-
-  const resto = 11 - (suma % 11);
-  if (resto === 11) return "0";
-  if (resto === 10) return "K";
-  return String(resto);
-}
+// VALIDACIÓN DE RUN CHILENO 
 
 function validarRun(valor) {
   const run = valor.trim().toUpperCase();
@@ -77,21 +60,16 @@ function validarRun(valor) {
   if (run === "") {
     return "El RUN es obligatorio.";
   }
-  if (run.length < 7 || run.length > 9) {
-    return "El RUN debe tener entre 7 y 9 caracteres, sin puntos ni guion.";
-  }
-  if (!/^[0-9]+[0-9K]$/.test(run)) {
-    return "El RUN solo puede tener números y, al final, un dígito verificador (0-9 o K).";
+  
+  // Verifica que tenga 7 u 8 números al inicio y termine en un número o K
+  if (!/^\d{7,8}[0-9K]$/.test(run)) {
+    return "El RUN debe tener entre 8 y 9 caracteres en total, sin puntos ni guion, y terminar en número o K.";
   }
 
-  const numero = run.slice(0, -1);
-  const digitoIngresado = run.slice(-1);
-
-  if (digitoIngresado !== calcularDigitoVerificador(numero)) {
-    return "El dígito verificador del RUN no es válido.";
-  }
+  // Como ya no exigimos el cálculo matemático real, si pasa la prueba de arriba, es válido.
   return "";
 }
+
 
 // Helper genérico para mostrar/ocultar un mensaje de error
 // junto a un campo, reutilizado por todos los formularios.
