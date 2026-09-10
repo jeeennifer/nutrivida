@@ -9,7 +9,7 @@
 // login y contacto).
 // =====================================================
 
-const PATRON_CORREO = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const PATRON_CORREO = /^[^\s@]+@(duocuc\.cl|profesor\.duoc\.cl|gmail\.com)$/i;
 
 function validarCorreo(valor) {
   const correo = valor.trim();
@@ -21,7 +21,7 @@ function validarCorreo(valor) {
     return "El correo no puede superar los 100 caracteres.";
   }
   if (!PATRON_CORREO.test(correo)) {
-    return "Ingresa un correo válido (ejemplo@correo.com).";
+    return "Ingresa un correo válido (ejemplo@duocuc.cl, ejemplo@profesor.duoc.cl o ejemplo@gmail.com).";
   }
   return "";
 }

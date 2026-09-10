@@ -665,3 +665,41 @@ nav a:hover {
   font-weight: bold;
   font-size: 0.9rem;
 }
+
+/* =========================
+   CARRITO LATERAL (OFF-CANVAS)
+   ========================= */
+.overlay-carrito {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5); z-index: 99;
+  visibility: hidden; opacity: 0; transition: 0.3s ease;
+}
+.overlay-carrito.activo {
+  visibility: visible; opacity: 1;
+}
+
+.carrito-lateral {
+  position: fixed; top: 0; right: -400px; /* Escondido afuera */
+  width: 400px; max-width: 100%; height: 100vh;
+  background: #ffffff; box-shadow: -4px 0 15px rgba(0,0,0,0.1);
+  z-index: 100; display: flex; flex-direction: column;
+  transition: right 0.3s ease;
+}
+.carrito-lateral.activo {
+  right: 0; /* Se desliza hacia adentro */
+}
+
+.carrito-lateral-header {
+  padding: 20px; border-bottom: 1px solid #eeeeee;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.btn-cerrar {
+  background: none; border: none; font-size: 2rem;
+  cursor: pointer; color: #333;
+}
+.carrito-lateral-body {
+  padding: 20px; flex-grow: 1; overflow-y: auto;
+}
+.carrito-lateral-footer {
+  padding: 20px; border-top: 1px solid #eeeeee; background: #f9f9f9;
+}
