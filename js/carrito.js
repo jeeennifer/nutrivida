@@ -19,9 +19,9 @@ function agregarAlCarrito(idProducto) {
   actualizarCarrito();
 }
 
-// =====================================================
-// ACTUALIZACIÓN VISUAL DEL CARRITO Y CONTADOR DEL HEADER
-// =====================================================
+
+
+
 function actualizarCarrito() {
   const contadorCarrito = document.getElementById("contador-carrito");
   if (contadorCarrito) {

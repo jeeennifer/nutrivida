@@ -1,13 +1,4 @@
-// =====================================================
-// Responsabilidad única: reglas de validación reutilizables.
-// Cada función recibe un valor y devuelve un mensaje de
-// error (string) o "" si el valor es válido. Así, cada
-// formulario (login.js, registro.js, contacto.js, etc.)
-// solo llama a estas funciones y muestra el resultado,
-// sin repetir expresiones regulares ni reglas por todos
-// lados (evita el código duplicado que había antes en
-// login y contacto).
-// =====================================================
+
 
 const PATRON_CORREO = /^[^\s@]+@(duoc\.cl|gmail\.com)$/i;
 

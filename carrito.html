@@ -47,14 +47,7 @@
 
         <button id="vaciar-carrito" class="boton boton-secundario" style="width: 100%; margin-bottom: 15px;">Vaciar carrito</button>
 
-        <!--
-          "btn-contratar" es un <a>, no un <button>: por defecto solo
-          navega a agendar-cita.html, como cualquier link normal.
-          carrito.js intercepta el clic (con preventDefault) SOLO si
-          el carrito está vacío o falta iniciar sesión; si todo está
-          bien, deja que el navegador siga el link. Así se evita
-          usar confirm()/alert() para avanzar de página.
-        -->
+       
         <a href="agendar-cita.html" id="btn-contratar" class="boton" style="width: 100%; display: block; text-align: center;">Confirmar y agendar</a>
         <p id="mensaje-carrito" class="mensaje-formulario"></p>
         <small style="display: block; margin-top: 10px; color: #555;">Deberás iniciar sesión para completar la contratación.</small>
