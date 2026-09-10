@@ -31,13 +31,27 @@ function crearTarjetaPlan(plan) {
 function activarBotonesAgendar() {
   document.querySelectorAll(".producto button[data-id]").forEach((boton) => {
     boton.addEventListener("click", (evento) => {
-      evento.preventDefault(); // el botón vive dentro de un <a>: evita que además navegue
+      evento.preventDefault(); 
       agregarAlCarrito(Number(boton.dataset.id));
-      window.location.href = "carrito.html";
+      
+      // Magia del panel lateral
+      const panel = document.getElementById("carrito-lateral");
+      const overlay = document.getElementById("overlay-carrito");
+      if(panel && overlay) {
+        panel.classList.add("activo");
+        overlay.classList.add("activo");
+      }
     });
   });
 }
 
+// Lógica para cerrar el panel
+document.addEventListener("click", (e) => {
+  if (e.target.id === "cerrar-carrito-lateral" || e.target.id === "overlay-carrito") {
+    document.getElementById("carrito-lateral").classList.remove("activo");
+    document.getElementById("overlay-carrito").classList.remove("activo");
+  }
+});
 // ---------- HOME: 3 planes destacados ----------
 const grillaDestacados = document.getElementById("grilla-destacados");
 if (grillaDestacados) {
