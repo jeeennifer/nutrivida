@@ -1,10 +1,8 @@
-// =====================================================
-// Responsabilidad única: la página registro.html (nueva).
-// Usa las mismas reglas de validación que login.js y que el
-// mantenedor de usuarios del panel admin (RUN con dígito
-// verificador, correo, largo de contraseña), para no repetir
-// las reglas de negocio en varios lugares.
-// =====================================================
+
+/* Usa las mismas reglas de validación que login.js y que el
+mantenedor de usuarios del panel admin (RUN con dígito
+ verificador, correo, largo de contraseña)
+*/
 
 const formularioRegistro = document.getElementById("formulario-registro");
 

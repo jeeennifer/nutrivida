@@ -1,7 +1,6 @@
-// =====================================================
-// Responsabilidad única: la tabla de admin-planes.html
+/*
 // (listado de todos los planes, con acciones editar/eliminar).
-// =====================================================
+*/
 
 const cuerpoTablaPlanes = document.getElementById("cuerpo-tabla-planes");
 

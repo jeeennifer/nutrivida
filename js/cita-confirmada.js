@@ -1,9 +1,7 @@
-// ====================================================
-// Responsabilidad única: leer la última cita guardada en
-// localStorage (por agendar-cita.js) y mostrarla como
-// mensaje de éxito en pantalla. Esta página reemplaza al
-// alert("¡Contratación confirmada!...") que existía antes.
-// =====================================================
+/* leer la última cita guardada en
+localStorage (por agendar-cita.js) y mostrarla como
+mensaje de éxito en pantalla. 
+// */
 
 const contenedorCitaConfirmada = document.getElementById("detalle-cita-confirmada");
 

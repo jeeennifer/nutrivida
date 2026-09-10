@@ -1,11 +1,3 @@
-// =====================================================
-// Responsabilidad única: la página login.html.
-// Antes esto mostraba alert("¡Sesión iniciada!...") y recién
-// ahí redirigía. Ahora el mensaje se muestra en la misma
-// página (dentro de #mensaje-login) y la redirección ocurre
-// igual, con window.location.href, sin ventana emergente.
-// =====================================================
-
 const formularioLogin = document.getElementById("formulario-login");
 
 if (formularioLogin) {
@@ -26,9 +18,7 @@ if (formularioLogin) {
       return;
     }
 
-    // NOTA para la presentación: esto es una simulación de sesión
-    // solo en el navegador (localStorage), propia del nivel de este
-    // curso. No hay backend ni base de datos real detrás.
+    // simulación de sesión solo en el navegador (localStorage)
     localStorage.setItem("sesionActiva", "true");
     localStorage.setItem("correoSesion", inputEmail.value.trim());
 

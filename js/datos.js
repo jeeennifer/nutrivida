@@ -1,21 +1,13 @@
-// =====================================================
-// -----------------------------------------------------
-// Responsabilidad única de este archivo: guardar los datos
-// del negocio (planes y usuarios) y las funciones para
-// leerlos/guardarlos desde localStorage. Ningún otro
-// archivo JS del proyecto debe tocar localStorage
-// directamente para estos datos: siempre pasan por aquí,
-// para que si un día cambia la forma de guardar los datos
-// (por ejemplo, a una API real) solo haya que tocar este
-// archivo y no los demás.
-// =====================================================
+/* guardar los datos
+del negocio (planes y usuarios) y las funciones para
+leerlos/guardarlos desde localStorage.
 
-// ---------- PLANES QUE OFRECE LA CLÍNICA ----------
-// Estos son los datos "de fábrica". Si el administrador
-// agrega/edita/elimina planes desde el panel, esos cambios
-// se guardan aparte en localStorage y tienen prioridad
-// sobre esta lista (ver obtenerPlanes más abajo).
-localStorage.removeItem("planes");
+Planes de la clinica
+Estos son los datos "de fábrica". Si el administrador
+agrega/edita/elimina planes desde el panel, esos cambios
+se guardan aparte en localStorage y tienen prioridad
+sobre esta lista (ver obtenerPlanes más abajo).
+*/
 
 const PLANES_INICIALES = [
   {
