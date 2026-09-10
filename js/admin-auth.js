@@ -6,8 +6,14 @@ a login.html. Este script debe cargarse ANTES que cualquier
 otro script propio de cada página de administración.
 */
 
-if (localStorage.getItem("sesionActiva") !== "true") {
+
+const sesionActivaAdmin = localStorage.getItem("sesionActiva") === "true";
+const correoSesionActual = (localStorage.getItem("correoSesion") || "").toLowerCase();
+
+if (!sesionActivaAdmin) {
   window.location.href = "login.html";
+} else if (correoSesionActual !== "admin@gmail.com") {
+  window.location.href = "index.html";
 }
 
 const btnCerrarSesionAdmin = document.getElementById("cerrar-sesion-admin");

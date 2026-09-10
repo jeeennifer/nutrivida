@@ -9,7 +9,7 @@
 // login y contacto).
 // =====================================================
 
-const PATRON_CORREO = /^[^\s@]+@(duocuc\.cl|profesor\.duoc\.cl|gmail\.com)$/i;
+const PATRON_CORREO = /^[^\s@]+@(duoc\.cl|gmail\.com)$/i;
 
 function validarCorreo(valor) {
   const correo = valor.trim();
@@ -21,7 +21,7 @@ function validarCorreo(valor) {
     return "El correo no puede superar los 100 caracteres.";
   }
   if (!PATRON_CORREO.test(correo)) {
-    return "Ingresa un correo válido (ejemplo@duocuc.cl, ejemplo@profesor.duoc.cl o ejemplo@gmail.com).";
+    return "Ingresa un correo válido (ejemplo@duoc.cl o ejemplo@gmail.com).";
   }
   return "";
 }
@@ -93,10 +93,8 @@ function validarRun(valor) {
   return "";
 }
 
-// -----------------------------------------------------
 // Helper genérico para mostrar/ocultar un mensaje de error
 // junto a un campo, reutilizado por todos los formularios.
-// -----------------------------------------------------
 function mostrarErrorCampo(idSpanError, mensaje) {
   const span = document.getElementById(idSpanError);
   if (!span) return;
@@ -104,10 +102,9 @@ function mostrarErrorCampo(idSpanError, mensaje) {
   span.style.display = mensaje ? "block" : "none";
 }
 
-// -----------------------------------------------------
+
 // Helper para mostrar el mensaje final del formulario
 // (reemplaza a alert(): es un <p> dentro de la misma página).
-// -----------------------------------------------------
 function mostrarMensajeFormulario(idParrafo, texto, tipo) {
   const parrafo = document.getElementById(idParrafo);
   if (!parrafo) return;

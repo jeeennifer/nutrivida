@@ -59,36 +59,21 @@ const PLANES_INICIALES = [
 // ---------- USUARIOS DE EJEMPLO PARA EL PANEL ADMIN ----------
 const USUARIOS_INICIALES = [
   {
-    run: "191182728",
-    nombre: "Rocío",
-    apellidos: "Contreras Muñoz",
-    correo: "rocio.contreras@gmail.com",
-    tipo: "Paciente",
-    region: "La Araucanía",
-    comuna: "Temuco"
+    run: "111111111",
+    nombre: "Administrador",
+    apellidos: "NutriVida",
+    correo: "admin@gmail.com",
+    tipo: "Administrador"
   },
   {
     run: "112223334",
-    nombre: "Ana",
-    apellidos: "Soto Reyes",
-    correo: "ana.soto@nutrivida.cl",
-    tipo: "Nutricionista",
-    region: "La Araucanía",
-    comuna: "Temuco"
+    nombre: "Pepito",
+    apellidos: "fit",
+    correo: "paciente@duoc.cl",
+    tipo: "Paciente"
   }
 ];
 
-// ---------- REGIONES Y COMUNAS (para los <select> dependientes) ----------
-const REGIONES = [
-  { region: "La Araucanía", comunas: ["Temuco", "Padre Las Casas", "Villarrica"] },
-  { region: "Metropolitana", comunas: ["Santiago", "Providencia", "Ñuñoa"] },
-  { region: "Valparaíso", comunas: ["Valparaíso", "Viña del Mar", "Quilpué"] }
-];
-
-function obtenerComunas(nombreRegion) {
-  const region = REGIONES.find((r) => r.region === nombreRegion);
-  return region ? region.comunas : [];
-}
 
 // ---------- LECTURA/ESCRITURA DE PLANES ----------
 function obtenerPlanes() {

@@ -12,28 +12,7 @@ const inputNombreUsuario = document.getElementById("nombre-usuario");
 const inputApellidosUsuario = document.getElementById("apellidos-usuario");
 const inputCorreoUsuario = document.getElementById("correo-usuario");
 const selectTipoUsuario = document.getElementById("tipo-usuario");
-const selectRegionUsuario = document.getElementById("region-usuario");
-const selectComunaUsuario = document.getElementById("comuna-usuario");
 
-REGIONES.forEach((r) => {
-  const opcion = document.createElement("option");
-  opcion.value = r.region;
-  opcion.textContent = r.region;
-  selectRegionUsuario.appendChild(opcion);
-});
-
-function actualizarComunasUsuario(comunaPreseleccionada = "") {
-  selectComunaUsuario.innerHTML = '<option value="">Selecciona comuna</option>';
-  obtenerComunas(selectRegionUsuario.value).forEach((nombreComuna) => {
-    const opcion = document.createElement("option");
-    opcion.value = nombreComuna;
-    opcion.textContent = nombreComuna;
-    if (nombreComuna === comunaPreseleccionada) opcion.selected = true;
-    selectComunaUsuario.appendChild(opcion);
-  });
-}
-
-selectRegionUsuario.addEventListener("change", () => actualizarComunasUsuario());
 
 // ---------- Modo edición: precargar datos si viene ?run= ----------
 const parametros = new URLSearchParams(window.location.search);
@@ -49,8 +28,6 @@ if (runAEditar) {
     inputApellidosUsuario.value = usuarioExistente.apellidos;
     inputCorreoUsuario.value = usuarioExistente.correo;
     selectTipoUsuario.value = usuarioExistente.tipo;
-    selectRegionUsuario.value = usuarioExistente.region;
-    actualizarComunasUsuario(usuarioExistente.comuna);
   }
 }
 
@@ -62,20 +39,17 @@ formUsuario.addEventListener("submit", (evento) => {
   const errorApellidos = validarTexto(inputApellidosUsuario.value, "Los apellidos", 2, 100);
   const errorCorreo = validarCorreo(inputCorreoUsuario.value);
   const errorTipo = selectTipoUsuario.value === "" ? "Selecciona un tipo de usuario." : "";
-  const errorRegion = selectRegionUsuario.value === "" ? "Selecciona una región." : "";
-  const errorComuna = selectComunaUsuario.value === "" ? "Selecciona una comuna." : "";
-
+  
   mostrarErrorCampo("error-run-usuario", errorRun);
   mostrarErrorCampo("error-nombre-usuario", errorNombre);
   mostrarErrorCampo("error-apellidos-usuario", errorApellidos);
   mostrarErrorCampo("error-correo-usuario", errorCorreo);
   mostrarErrorCampo("error-tipo-usuario", errorTipo);
-  mostrarErrorCampo("error-region-usuario", errorRegion);
-  mostrarErrorCampo("error-comuna-usuario", errorComuna);
+
 
   const hayErrores =
     errorRun || errorNombre || errorApellidos || errorCorreo ||
-    errorTipo || errorRegion || errorComuna;
+    errorTipo;
 
   if (hayErrores) {
     mostrarMensajeFormulario("mensaje-usuario", "Revisa los campos marcados antes de guardar.", "error");
@@ -88,9 +62,7 @@ formUsuario.addEventListener("submit", (evento) => {
     nombre: inputNombreUsuario.value.trim(),
     apellidos: inputApellidosUsuario.value.trim(),
     correo: inputCorreoUsuario.value.trim(),
-    tipo: selectTipoUsuario.value,
-    region: selectRegionUsuario.value,
-    comuna: selectComunaUsuario.value
+    tipo: selectTipoUsuario.value
   };
 
   if (runAEditar) {
