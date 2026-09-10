@@ -26,6 +26,7 @@
         <a href="carrito.html" class="btn-carrito" style="text-decoration: none;">
           Mis Horas (<span id="contador-carrito">0</span>)
         </a>
+        <a href="login.html" class="boton-ingresar">Ingresar</a>
       </div>
     </div>
   </header>
@@ -33,26 +34,28 @@
   <main class="contenedor seccion">
     <div class="form-contenedor">
       <div class="titulos-seccion">
-        <h2>Crear cuenta de paciente</h2>
-        <p>Regístrate para poder agendar tus citas</p>
+        <h2>Crear Cuenta</h2>
+        <p>Regístrate para agendar tus horas más rápido</p>
       </div>
 
+      <!-- novalidate apaga la alerta del navegador para usar nuestro JS -->
       <form id="formulario-registro" class="formulario" novalidate>
+
         <div class="grupo-form">
-          <label for="run-registro">RUN (sin puntos ni guion):</label>
-          <input type="text" id="run-registro" maxlength="9" placeholder="Ej: 19011022K">
-          <span id="error-run-registro" class="mensaje-error" style="display: none;"></span>
+          <label for="run">RUN:</label>
+          <input type="text" id="run" placeholder="Ej: 19011022K (sin puntos ni guión)" autocomplete="off">
+          <span id="error-run" class="mensaje-error" style="display: none;"></span>
         </div>
 
         <div class="grupo-form">
           <label for="nombre-registro">Nombre:</label>
-          <input type="text" id="nombre-registro" maxlength="50">
+          <input type="text" id="nombre-registro" placeholder="Ej: Camila" autocomplete="given-name">
           <span id="error-nombre-registro" class="mensaje-error" style="display: none;"></span>
         </div>
 
         <div class="grupo-form">
           <label for="apellidos-registro">Apellidos:</label>
-          <input type="text" id="apellidos-registro" maxlength="100">
+          <input type="text" id="apellidos-registro" placeholder="Ej: Fuentes Rojas" autocomplete="family-name">
           <span id="error-apellidos-registro" class="mensaje-error" style="display: none;"></span>
         </div>
 
@@ -64,31 +67,50 @@
 
         <div class="grupo-form">
           <label for="password-registro">Contraseña:</label>
-          <input type="password" id="password-registro" placeholder="Entre 6 y 10 caracteres" autocomplete="new-password">
+          <input type="password" id="password-registro" placeholder="Entre 4 y 10 caracteres" autocomplete="new-password">
           <span id="error-password-registro" class="mensaje-error" style="display: none;"></span>
         </div>
 
         <div class="grupo-form">
-          <label for="region-registro">Región:</label>
-          <select id="region-registro">
-            <option value="">Selecciona región</option>
-          </select>
-          <span id="error-region-registro" class="mensaje-error" style="display: none;"></span>
+          <label for="confirmar-password-registro">Confirmar Contraseña:</label>
+          <input type="password" id="confirmar-password-registro" placeholder="Repite tu contraseña" autocomplete="new-password">
+          <span id="error-confirmar-password-registro" class="mensaje-error" style="display: none;"></span>
         </div>
 
         <div class="grupo-form">
-          <label for="comuna-registro">Comuna:</label>
-          <select id="comuna-registro">
-            <option value="">Selecciona comuna</option>
-          </select>
-          <span id="error-comuna-registro" class="mensaje-error" style="display: none;"></span>
+          <label for="fecha-nacimiento">Fecha de Nacimiento (opcional):</label>
+          <input type="date" id="fecha-nacimiento" autocomplete="bday">
+          <span id="error-fecha-nacimiento" class="mensaje-error" style="display: none;"></span>
         </div>
 
-        <button type="submit" class="boton" style="width: 100%; margin-top: 15px;">Crear cuenta</button>
-        <p id="mensaje-registro" class="mensaje-formulario"></p>
-      </form>
+        <div class="grupo-form">
+          <label for="region">Región:</label>
+          <select id="region" autocomplete="address-level1">
+            <option value="">-- Seleccione la región --</option>
+          </select>
+          <span id="error-region" class="mensaje-error" style="display: none;"></span>
+        </div>
 
-      <p style="margin-top: 20px; text-align: center;">¿Ya tienes cuenta? <a href="login.html">Ingresa aquí</a></p>
+        <div class="grupo-form">
+          <label for="comuna">Comuna:</label>
+          <select id="comuna" autocomplete="address-level2">
+            <option value="">-- Seleccione primero una región --</option>
+          </select>
+          <span id="error-comuna" class="mensaje-error" style="display: none;"></span>
+        </div>
+
+        <div class="grupo-form">
+          <label for="direccion">Dirección:</label>
+          <input type="text" id="direccion" placeholder="Ej: Av. Alemania 1234" autocomplete="street-address">
+          <span id="error-direccion" class="mensaje-error" style="display: none;"></span>
+        </div>
+
+        <button type="submit" class="boton" style="width: 100%; margin-top: 15px;">Registrarme</button>
+
+        <p style="text-align: center; margin-top: 15px; font-size: 0.9rem;">
+          ¿Ya tienes cuenta? <a href="login.html" style="color: #3d8c53; font-weight: bold;">Inicia sesión</a>
+        </p>
+      </form>
     </div>
   </main>
 
@@ -99,9 +121,7 @@
     </div>
   </footer>
 
-  <script src="js/datos.js"></script>
-  <script src="js/carrito.js"></script>
+  <script src="js/app.js"></script>
   <script src="js/validaciones.js"></script>
-  <script src="js/registro.js"></script>
 </body>
 </html>

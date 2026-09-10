@@ -3,105 +3,109 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nuevo/Editar Usuario - Panel Administrador NutriVida</title>
+  <title>Nuevo Usuario - NutriVida</title>
   <link rel="stylesheet" href="assets/estilos.css">
 </head>
 <body>
 
-  <header>
-    <div class="contenedor encabezado">
-      <a href="admin-home.html" class="logo">
-        <img src="assets/img/logo.png" alt="NutriVida" class="logo-img">
-      </a>
-      <nav aria-label="Navegación del administrador">
+  <div class="admin-wrapper">
+    <aside class="admin-sidebar">
+      <div class="admin-logo">
+        <img src="assets/img/logo.png" alt="NutriVida">
+        <span>NutriVida Admin</span>
+      </div>
+      <nav aria-label="Navegación administrador">
         <ul>
           <li><a href="admin-home.html">Inicio</a></li>
-          <li><a href="admin-planes.html">Planes</a></li>
-          <li><a href="admin-usuarios.html">Usuarios</a></li>
-          <li><a href="index.html">Ver sitio</a></li>
+          <li><a href="admin-productos.html">Planes (Productos)</a></li>
+          <li><a href="admin-usuarios.html" class="activo">Usuarios</a></li>
         </ul>
       </nav>
-      <div class="acciones-header">
-        <button id="cerrar-sesion-admin" class="boton boton-secundario">Cerrar sesión</button>
+      <a href="index.html" class="admin-salir">Salir al sitio &rarr;</a>
+    </aside>
+
+    <main class="admin-contenido">
+      <a href="admin-usuarios.html" class="enlace-volver">&larr; Volver al listado</a>
+
+      <div class="form-contenedor" style="max-width: 700px; margin: 0;">
+        <div class="titulos-seccion" style="text-align: left;">
+          <h2 id="titulo-form-usuario">Nuevo Usuario</h2>
+        </div>
+
+        <!-- novalidate apaga la alerta del navegador para usar nuestro JS -->
+        <form id="formulario-usuario-admin" class="formulario" novalidate>
+          <input type="hidden" id="usuario-id">
+
+          <div class="grupo-form">
+            <label for="run-admin">RUN:</label>
+            <input type="text" id="run-admin" placeholder="Ej: 19011022K (sin puntos ni guión)" autocomplete="off">
+            <span id="error-run-admin" class="mensaje-error" style="display: none;"></span>
+          </div>
+
+          <div class="grupo-form">
+            <label for="nombre-admin">Nombre:</label>
+            <input type="text" id="nombre-admin" placeholder="Ej: Camila" autocomplete="off">
+            <span id="error-nombre-admin" class="mensaje-error" style="display: none;"></span>
+          </div>
+
+          <div class="grupo-form">
+            <label for="apellidos-admin">Apellidos:</label>
+            <input type="text" id="apellidos-admin" placeholder="Ej: Fuentes Rojas" autocomplete="off">
+            <span id="error-apellidos-admin" class="mensaje-error" style="display: none;"></span>
+          </div>
+
+          <div class="grupo-form">
+            <label for="email-admin">Correo Electrónico:</label>
+            <input type="email" id="email-admin" placeholder="ejemplo@correo.com" autocomplete="off">
+            <span id="error-email-admin" class="mensaje-error" style="display: none;"></span>
+          </div>
+
+          <div class="grupo-form">
+            <label for="fecha-nacimiento-admin">Fecha de Nacimiento (opcional):</label>
+            <input type="date" id="fecha-nacimiento-admin">
+            <span id="error-fecha-nacimiento-admin" class="mensaje-error" style="display: none;"></span>
+          </div>
+
+          <div class="grupo-form">
+            <label for="tipo-usuario">Tipo de Usuario:</label>
+            <select id="tipo-usuario">
+              <option value="">-- Seleccione un tipo --</option>
+              <option value="Administrador">Administrador</option>
+              <option value="Vendedor">Vendedor</option>
+              <option value="Cliente">Cliente</option>
+            </select>
+            <span id="error-tipo-usuario" class="mensaje-error" style="display: none;"></span>
+          </div>
+
+          <div class="grupo-form">
+            <label for="region-admin">Región:</label>
+            <select id="region-admin">
+              <option value="">-- Seleccione la región --</option>
+            </select>
+            <span id="error-region-admin" class="mensaje-error" style="display: none;"></span>
+          </div>
+
+          <div class="grupo-form">
+            <label for="comuna-admin">Comuna:</label>
+            <select id="comuna-admin">
+              <option value="">-- Seleccione primero una región --</option>
+            </select>
+            <span id="error-comuna-admin" class="mensaje-error" style="display: none;"></span>
+          </div>
+
+          <div class="grupo-form">
+            <label for="direccion-admin">Dirección:</label>
+            <input type="text" id="direccion-admin" placeholder="Ej: Av. Alemania 1234" autocomplete="off">
+            <span id="error-direccion-admin" class="mensaje-error" style="display: none;"></span>
+          </div>
+
+          <button type="submit" class="boton" style="width: 100%; margin-top: 15px;">Guardar Usuario</button>
+        </form>
       </div>
-    </div>
-  </header>
+    </main>
+  </div>
 
-  <main class="contenedor seccion">
-    <a href="admin-usuarios.html" class="enlace-volver">&larr; Volver al listado</a>
-
-    <div class="form-contenedor">
-      <div class="titulos-seccion">
-        <h2 id="titulo-form-usuario">Nuevo usuario</h2>
-      </div>
-
-      <form id="form-usuario" class="formulario" novalidate>
-        <div class="grupo-form">
-          <label for="run-usuario">RUN (sin puntos ni guion):</label>
-          <input type="text" id="run-usuario" maxlength="9" placeholder="Ej: 19011022K">
-          <span id="error-run-usuario" class="mensaje-error" style="display: none;"></span>
-        </div>
-
-        <div class="grupo-form">
-          <label for="nombre-usuario">Nombre:</label>
-          <input type="text" id="nombre-usuario" maxlength="50">
-          <span id="error-nombre-usuario" class="mensaje-error" style="display: none;"></span>
-        </div>
-
-        <div class="grupo-form">
-          <label for="apellidos-usuario">Apellidos:</label>
-          <input type="text" id="apellidos-usuario" maxlength="100">
-          <span id="error-apellidos-usuario" class="mensaje-error" style="display: none;"></span>
-        </div>
-
-        <div class="grupo-form">
-          <label for="correo-usuario">Correo electrónico:</label>
-          <input type="email" id="correo-usuario" maxlength="100">
-          <span id="error-correo-usuario" class="mensaje-error" style="display: none;"></span>
-        </div>
-
-        <div class="grupo-form">
-          <label for="tipo-usuario">Tipo de usuario:</label>
-          <select id="tipo-usuario">
-            <option value="">Selecciona tipo</option>
-            <option value="Administrador">Administrador</option>
-            <option value="Nutricionista">Nutricionista</option>
-            <option value="Paciente">Paciente</option>
-          </select>
-          <span id="error-tipo-usuario" class="mensaje-error" style="display: none;"></span>
-        </div>
-
-        <div class="grupo-form">
-          <label for="region-usuario">Región:</label>
-          <select id="region-usuario">
-            <option value="">Selecciona región</option>
-          </select>
-          <span id="error-region-usuario" class="mensaje-error" style="display: none;"></span>
-        </div>
-
-        <div class="grupo-form">
-          <label for="comuna-usuario">Comuna:</label>
-          <select id="comuna-usuario">
-            <option value="">Selecciona comuna</option>
-          </select>
-          <span id="error-comuna-usuario" class="mensaje-error" style="display: none;"></span>
-        </div>
-
-        <button type="submit" class="boton" style="width: 100%; margin-top: 15px;">Guardar usuario</button>
-        <p id="mensaje-usuario" class="mensaje-formulario"></p>
-      </form>
-    </div>
-  </main>
-
-  <footer class="footer-minimalista">
-    <div class="contenedor">
-      <p>NutriVida &middot; Panel Administrador &middot; DSY1104</p>
-    </div>
-  </footer>
-
-  <script src="js/datos.js"></script>
+  <script src="js/app.js"></script>
   <script src="js/validaciones.js"></script>
-  <script src="js/admin-auth.js"></script>
-  <script src="js/admin-usuario-form.js"></script>
 </body>
 </html>

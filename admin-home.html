@@ -8,57 +8,39 @@
 </head>
 <body>
 
-  <header>
-    <div class="contenedor encabezado">
-      <a href="admin-home.html" class="logo">
-        <img src="assets/img/logo.png" alt="NutriVida" class="logo-img">
-      </a>
-      <nav aria-label="Navegación del administrador">
+  <div class="admin-wrapper">
+    <aside class="admin-sidebar">
+      <div class="admin-logo">
+        <img src="assets/img/logo.png" alt="NutriVida">
+        <span>NutriVida Admin</span>
+      </div>
+      <nav aria-label="Navegación administrador">
         <ul>
-          <li><a href="admin-home.html">Inicio</a></li>
-          <li><a href="admin-planes.html">Planes</a></li>
+          <li><a href="admin-home.html" class="activo">Inicio</a></li>
+          <li><a href="admin-productos.html">Planes (Productos)</a></li>
           <li><a href="admin-usuarios.html">Usuarios</a></li>
-          <li><a href="index.html">Ver sitio</a></li>
         </ul>
       </nav>
-      <div class="acciones-header">
-        <button id="cerrar-sesion-admin" class="boton boton-secundario">Cerrar sesión</button>
+      <a href="index.html" class="admin-salir">Salir al sitio &rarr;</a>
+    </aside>
+
+    <main class="admin-contenido">
+      <h2>¡Hola, Administrador!</h2>
+      <p style="color:#555; margin-bottom: 30px;">Este es el panel de gestión de NutriVida. Desde aquí puedes administrar los planes y los usuarios del sistema.</p>
+
+      <div class="admin-tarjetas-resumen">
+        <div class="admin-tarjeta-resumen">
+          <h3 id="resumen-total-planes">0</h3>
+          <p>Planes activos</p>
+        </div>
+        <div class="admin-tarjeta-resumen">
+          <h3 id="resumen-total-usuarios">0</h3>
+          <p>Usuarios registrados</p>
+        </div>
       </div>
-    </div>
-  </header>
+    </main>
+  </div>
 
-  <main class="contenedor seccion">
-    <div class="titulos-seccion">
-      <p class="subtitulo">PANEL ADMINISTRADOR</p>
-      <h2>Bienvenido/a</h2>
-    </div>
-
-    <!-- Diseño libre y minimalista: solo dos accesos directos,
-         tal como pide la rúbrica para la vista "Home" del admin -->
-    <div class="grilla-productos" style="grid-template-columns: repeat(2, 1fr); max-width: 700px; margin: 0 auto;">
-      <article class="producto">
-        <div class="producto-contenido" style="text-align: center;">
-          <h3>Planes</h3>
-          <p class="descripcion-plan">Crear, editar o eliminar los planes de la clínica.</p>
-          <a href="admin-planes.html" class="boton" style="width: 100%;">Ir a Planes</a>
-        </div>
-      </article>
-      <article class="producto">
-        <div class="producto-contenido" style="text-align: center;">
-          <h3>Usuarios</h3>
-          <p class="descripcion-plan">Crear, editar o eliminar usuarios del sistema.</p>
-          <a href="admin-usuarios.html" class="boton" style="width: 100%;">Ir a Usuarios</a>
-        </div>
-      </article>
-    </div>
-  </main>
-
-  <footer class="footer-minimalista">
-    <div class="contenedor">
-      <p>NutriVida &middot; Panel Administrador &middot; DSY1104</p>
-    </div>
-  </footer>
-
-  <script src="js/admin-auth.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>

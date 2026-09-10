@@ -431,136 +431,8 @@ nav a:hover {
 }
 
 /* =========================
-   BLOG (reutiliza .producto/.producto-contenido
-   del catálogo para no duplicar estilos de tarjeta)
+   RESPONSIVE
    ========================= */
-.fecha-blog {
-  font-size: 0.85rem;
-  color: #777777;
-  margin-bottom: 8px;
-}
-
-/* =========================
-   MENSAJES DE FORMULARIO SIN VENTANA EMERGENTE
-   -----------------------------------------------------
-   Reemplazan a alert()/confirm(): se muestran dentro de
-   la misma página, dentro de un <p id="mensaje-...">.
-   ========================= */
-.mensaje-formulario {
-  margin-top: 15px;
-  padding: 12px 16px;
-  border-radius: 6px;
-  font-weight: bold;
-  display: none; /* se muestra por JS solo cuando hay contenido */
-}
-
-.mensaje-formulario.exito {
-  display: block;
-  background: #e5f3e8;
-  color: #1e5631;
-  border: 1px solid #b6dcc0;
-}
-
-.mensaje-formulario.error {
-  display: block;
-  background: #fdeaea;
-  color: #a31515;
-  border: 1px solid #f3bcbc;
-}
-
-/* =========================
-   PÁGINA "AGENDAR CITA" Y "CITA CONFIRMADA"
-   ========================= */
-.resumen-cita {
-  background: #f4f9f5;
-  padding: 20px;
-  border-radius: 10px;
-  margin-bottom: 25px;
-}
-
-.resumen-cita .fila-resumen {
-  display: flex;
-  justify-content: space-between;
-  padding: 6px 0;
-  border-bottom: 1px solid #dddddd;
-}
-
-.resumen-cita .fila-resumen:last-child {
-  border-bottom: none;
-  font-weight: bold;
-  color: #1e5631;
-}
-
-.confirmacion-caja {
-  max-width: 600px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.confirmacion-caja .icono-exito {
-  font-size: 3rem;
-  margin-bottom: 10px;
-}
-
-/* Circulo con iniciales, usado cuando no hay foto de perfil real */
-.avatar-iniciales {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #3d8c53;
-  color: white;
-  font-weight: bold;
-  font-size: 1.6rem;
-}
-
-/* =========================
-   PANEL ADMINISTRADOR (minimalista)
-   Reutiliza el mismo header/footer del resto del sitio;
-   solo se agregan estilos para tablas y acciones.
-   ========================= */
-.tabla-admin {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-  background: white;
-}
-
-.tabla-admin th,
-.tabla-admin td {
-  text-align: left;
-  padding: 12px;
-  border-bottom: 1px solid #dddddd;
-}
-
-.tabla-admin th {
-  background: #f4f9f5;
-  color: #1e5631;
-}
-
-.fila-acciones {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.fila-acciones .boton {
-  padding: 6px 14px;
-  font-size: 0.9rem;
-}
-
-/* =========================
-   RESPONSIVE (3 puntos de quiebre: escritorio, tablet, celular)
-   ========================= */
-
-/* Tablet: de 3 a 2 columnas */
-@media (max-width: 1024px) {
-  .grilla-productos,
-  .grilla-equipo {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* Celular: todo a 1 columna */
 @media (max-width: 768px) {
   .encabezado {
     flex-direction: column;
@@ -570,19 +442,11 @@ nav a:hover {
     flex-wrap: wrap;
     justify-content: center;
   }
-  .hero-grid, .grilla-productos, .detalle-grid, .carrito-grid,
-  .footer-grid, .grilla-equipo {
+  .hero-grid, .grilla-productos, .detalle-grid, .carrito-grid, .footer-grid {
     grid-template-columns: 1fr;
   }
   .hero-imagen {
     order: -1; /* Mueve la imagen arriba en celular */
-  }
-  .tabla-admin {
-    font-size: 0.85rem;
-  }
-  .tabla-admin th,
-  .tabla-admin td {
-    padding: 8px 6px;
   }
 }
 
@@ -664,4 +528,266 @@ nav a:hover {
   color: #1e5631;
   font-weight: bold;
   font-size: 0.9rem;
+}
+
+/* =========================
+   VIDEO EMBEBIDO (responsivo)
+   ========================= */
+.video-responsivo {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 40px auto;
+  padding-top: 45%; /* proporción 16:9 aprox */
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.video-responsivo iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* =========================
+   BLOG (listado y detalle)
+   ========================= */
+.blog-item {
+  display: flex;
+  gap: 30px;
+  background: #f4f9f5;
+  border-radius: 12px;
+  padding: 25px;
+  margin-bottom: 30px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.blog-item img {
+  width: 260px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.blog-item-contenido {
+  flex: 1;
+  min-width: 220px;
+}
+
+.blog-item-contenido h3 {
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.blog-item-contenido p {
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.blog-detalle-imagen {
+  width: 100%;
+  max-height: 420px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin: 20px 0 30px 0;
+}
+
+/* =========================
+   PANEL ADMINISTRADOR
+   ========================= */
+.admin-wrapper {
+  display: flex;
+  min-height: 100vh;
+}
+
+.admin-sidebar {
+  width: 260px;
+  background: #1e5631;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  padding: 25px 0;
+  flex-shrink: 0;
+}
+
+.admin-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 20px 25px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  margin-bottom: 20px;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.admin-logo img {
+  max-height: 36px;
+  filter: brightness(0) invert(1);
+}
+
+.admin-sidebar nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-sidebar nav a {
+  display: block;
+  padding: 12px 20px;
+  color: #d9ead9;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.admin-sidebar nav a:hover,
+.admin-sidebar nav a.activo {
+  background: #3d8c53;
+  color: #ffffff;
+}
+
+.admin-salir {
+  margin-top: auto;
+  padding: 12px 20px;
+  color: #d9ead9;
+  text-decoration: none;
+  font-weight: bold;
+  border-top: 1px solid rgba(255,255,255,0.15);
+}
+
+.admin-salir:hover {
+  color: #ffffff;
+}
+
+.admin-contenido {
+  flex: 1;
+  padding: 40px;
+  background: #fafafa;
+}
+
+.admin-encabezado-tabla {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.admin-tarjetas-resumen {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.admin-tarjeta-resumen {
+  background: #ffffff;
+  border: 1px solid #eeeeee;
+  border-radius: 12px;
+  padding: 25px 30px;
+  min-width: 200px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+
+.admin-tarjeta-resumen h3 {
+  font-size: 2rem;
+  color: #1e5631;
+}
+
+.admin-tarjeta-resumen p {
+  color: #555;
+  font-weight: bold;
+}
+
+.tabla-admin {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+
+.tabla-admin th,
+.tabla-admin td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.tabla-admin th {
+  background: #f4f9f5;
+  color: #1e5631;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+.tabla-admin .btn-tabla {
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.tabla-admin .btn-editar {
+  background: #3d8c53;
+  color: #ffffff;
+}
+
+.tabla-admin .btn-eliminar-fila {
+  background: #ff4d4d;
+  color: #ffffff;
+}
+
+.badge-stock-critico {
+  color: #ff4d4d;
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+
+@media (max-width: 768px) {
+  .admin-wrapper {
+    flex-direction: column;
+  }
+  .admin-sidebar {
+    width: 100%;
+  }
+  .blog-item {
+    flex-direction: column;
+  }
+  .blog-item img {
+    width: 100%;
+  }
+}
+
+/* =========================
+   ACCESO RÁPIDO AL ADMIN (demo)
+   ========================= */
+.admin-flotante {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #1e5631;
+  color: #ffffff;
+  padding: 12px 20px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.85rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  z-index: 999;
+}
+
+.admin-flotante:hover {
+  background: #3d8c53;
 }

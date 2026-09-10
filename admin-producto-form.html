@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="titulo-pagina-producto">Nuevo Plan - NutriVida</title>
+  <link rel="stylesheet" href="assets/estilos.css">
+</head>
+<body>
+
+  <div class="admin-wrapper">
+    <aside class="admin-sidebar">
+      <div class="admin-logo">
+        <img src="assets/img/logo.png" alt="NutriVida">
+        <span>NutriVida Admin</span>
+      </div>
+      <nav aria-label="Navegación administrador">
+        <ul>
+          <li><a href="admin-home.html">Inicio</a></li>
+          <li><a href="admin-productos.html" class="activo">Planes (Productos)</a></li>
+          <li><a href="admin-usuarios.html">Usuarios</a></li>
+        </ul>
+      </nav>
+      <a href="index.html" class="admin-salir">Salir al sitio &rarr;</a>
+    </aside>
+
+    <main class="admin-contenido">
+      <a href="admin-productos.html" class="enlace-volver">&larr; Volver al listado</a>
+
+      <div class="form-contenedor" style="max-width: 700px; margin: 0;">
+        <div class="titulos-seccion" style="text-align: left;">
+          <h2 id="titulo-form-producto">Nuevo Plan</h2>
+        </div>
+
+        <!-- novalidate apaga la alerta del navegador para usar nuestro JS -->
+        <form id="formulario-producto" class="formulario" novalidate>
+          <input type="hidden" id="producto-id">
+
+          <div class="grupo-form">
+            <label for="codigo-producto">Código del Plan:</label>
+            <input type="text" id="codigo-producto" placeholder="Ej: PLN-001" autocomplete="off">
+            <span id="error-codigo-producto" class="mensaje-error" style="display: none;"></span>
+          </div>
+
+          <div class="grupo-form">
+            <label for="nombre-producto">Nombre:</label>
+            <input type="text" id="nombre-producto" placeholder="Ej: Consulta Deportiva" autocomplete="off">
+            <span id="error-nombre-producto" class="mensaje-error" style="display: none;"></span>
+          </div>
+
+          <div class="grupo-form">
+            <label for="descripcion-producto">Descripción (opcional):</label>
+            <textarea id="descripcion-producto" rows="4" placeholder="Describe brevemente el plan..."></textarea>
+            <span id="error-descripcion-producto" class="mensaje-error" style="display: none;"></span>
+          </div>
+
+          <div class="grupo-form">
+            <label for="precio-producto">Precio ($):</label>
+            <input type="number" id="precio-producto" min="0" step="0.01" placeholder="Ej: 25000" autocomplete="off">
+            <span id="error-precio-producto" class="mensaje-error" style="display: none;"></span>
+          </div>
+
+          <div class="grupo-form">
+            <label for="stock-producto">Stock (horas disponibles):</label>
+            <input type="number" id="stock-producto" min="0" step="1" placeholder="Ej: 20" autocomplete="off">
+            <span id="error-stock-producto" class="mensaje-error" style="display: none;"></span>
+          </div>
+
+          <div class="grupo-form">
+            <label for="stock-critico-producto">Stock Crítico (opcional):</label>
+            <input type="number" id="stock-critico-producto" min="0" step="1" placeholder="Ej: 3">
+            <span id="error-stock-critico-producto" class="mensaje-error" style="display: none;"></span>
+          </div>
+
+          <div class="grupo-form">
+            <label for="categoria-producto">Categoría:</label>
+            <select id="categoria-producto">
+              <option value="">-- Seleccione una categoría --</option>
+              <option value="Nutrición Deportiva">Nutrición Deportiva</option>
+              <option value="Pérdida de Peso">Pérdida de Peso</option>
+              <option value="Vegetariana / Vegana">Vegetariana / Vegana</option>
+              <option value="Enf. Metabólicas">Enf. Metabólicas</option>
+            </select>
+            <span id="error-categoria-producto" class="mensaje-error" style="display: none;"></span>
+          </div>
+
+          <div class="grupo-form">
+            <label for="imagen-producto">Imagen (opcional):</label>
+            <input type="text" id="imagen-producto" placeholder="Ej: assets/img/plan-nuevo.jpg">
+            <span id="error-imagen-producto" class="mensaje-error" style="display: none;"></span>
+          </div>
+
+          <button type="submit" class="boton" style="width: 100%; margin-top: 15px;">Guardar Plan</button>
+        </form>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/app.js"></script>
+  <script src="js/validaciones.js"></script>
+</body>
+</html>

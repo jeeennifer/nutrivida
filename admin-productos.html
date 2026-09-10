@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Administrar Usuarios - NutriVida</title>
+  <title>Administrar Planes - NutriVida</title>
   <link rel="stylesheet" href="assets/estilos.css">
 </head>
 <body>
@@ -17,8 +17,8 @@
       <nav aria-label="Navegación administrador">
         <ul>
           <li><a href="admin-home.html">Inicio</a></li>
-          <li><a href="admin-productos.html">Planes (Productos)</a></li>
-          <li><a href="admin-usuarios.html" class="activo">Usuarios</a></li>
+          <li><a href="admin-productos.html" class="activo">Planes (Productos)</a></li>
+          <li><a href="admin-usuarios.html">Usuarios</a></li>
         </ul>
       </nav>
       <a href="index.html" class="admin-salir">Salir al sitio &rarr;</a>
@@ -26,22 +26,22 @@
 
     <main class="admin-contenido">
       <div class="admin-encabezado-tabla">
-        <h2>Usuarios</h2>
-        <a href="admin-usuario-form.html" class="boton">+ Nuevo Usuario</a>
+        <h2>Planes</h2>
+        <a href="admin-producto-form.html" class="boton">+ Nuevo Plan</a>
       </div>
 
       <table class="tabla-admin">
         <thead>
           <tr>
-            <th>RUN</th>
+            <th>Código</th>
             <th>Nombre</th>
-            <th>Correo</th>
-            <th>Tipo</th>
-            <th>Región</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Categoría</th>
             <th>Acciones</th>
           </tr>
         </thead>
-        <tbody id="tabla-admin-usuarios">
+        <tbody id="tabla-admin-productos">
           <!-- Filas generadas dinámicamente por js/app.js -->
         </tbody>
       </table>
