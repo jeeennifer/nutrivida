@@ -15,6 +15,7 @@
 // agrega/edita/elimina planes desde el panel, esos cambios
 // se guardan aparte en localStorage y tienen prioridad
 // sobre esta lista (ver obtenerPlanes más abajo).
+localStorage.removeItem("planes");
 
 const PLANES_INICIALES = [
   {
