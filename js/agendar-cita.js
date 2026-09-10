@@ -1,10 +1,4 @@
-/* pagina a la que se llega al presionar "Confirmar y agendar" en el
-carrito. Aquí el paciente elige fecha y hora con el
-calendario nativo del navegador  y confirma su cita.
-Al enviar el formulario, se guarda la cita, se vacía el
-carrito y se navega a cita-confirmada.html: ningún alert()
-ni confirm() en todo el flujo.
-*/
+
 
 const listaResumenCita = document.getElementById("lista-resumen-cita");
 const formAgendar = document.getElementById("form-agendar-cita");

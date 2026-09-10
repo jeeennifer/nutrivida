@@ -1,13 +1,4 @@
-/* guardar los datos
-del negocio (planes y usuarios) y las funciones para
-leerlos/guardarlos desde localStorage.
 
-Planes de la clinica
-Estos son los datos "de fábrica". Si el administrador
-agrega/edita/elimina planes desde el panel, esos cambios
-se guardan aparte en localStorage y tienen prioridad
-sobre esta lista (ver obtenerPlanes más abajo).
-*/
 
 const PLANES_INICIALES = [
   {
@@ -53,7 +44,7 @@ const PLANES_INICIALES = [
     precio: 35000,
     stock: 12,
     imagen: "assets/img/plan-clinico.jpg"
-  }
+  },
 ];
 
 // ---------- USUARIOS DE EJEMPLO PARA EL PANEL ADMIN ----------

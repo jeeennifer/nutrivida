@@ -1,17 +1,11 @@
-/*  dibujar los planes en pantalla.
- Se usa en 3 vistas distintas:
-   - index.html      -> "grilla-destacados" (3 planes)
-   - planes.html      -> "grilla-productos" (todos los planes)
-  - detalle-plan.html -> "detalle-plan-contenido" (1 plan, según ?id=)
- La lógica del carrito vive aparte, en carrito.js.
-*/
+
 
 function crearTarjetaPlan(plan) {
   const tarjeta = document.createElement("article");
   tarjeta.classList.add("producto");
 
-  /* El clic en la imagen/nombre lleva al detalle del plan (?id=X);
- el botón "Agendar" agrega directo al carrito sin cambiar de página. */
+  
+
   tarjeta.innerHTML = `
     <a href="detalle-plan.html?id=${plan.id}">
       <img src="${plan.imagen}" alt="${plan.nombre}">

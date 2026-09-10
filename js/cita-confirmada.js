@@ -1,7 +1,4 @@
-/* leer la última cita guardada en
-localStorage (por agendar-cita.js) y mostrarla como
-mensaje de éxito en pantalla. 
-// */
+
 
 const contenedorCitaConfirmada = document.getElementById("detalle-cita-confirmada");
 

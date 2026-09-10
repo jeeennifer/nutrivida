@@ -1,10 +1,3 @@
-/* proteger las páginas admin-*.html.
-Como el proyecto es solo HTML/CSS/JS (sin servidor), la
-"protección" es una simulación en el navegador: si no hay
-sesión guardada en localStorage, se redirige de inmediato
-a login.html. Este script debe cargarse ANTES que cualquier
-otro script propio de cada página de administración.
-*/
 
 
 const sesionActivaAdmin = localStorage.getItem("sesionActiva") === "true";

@@ -1,11 +1,4 @@
-/*
-todo lo relacionado al carrito
-de compras ("Mis Horas"). Se usa en index.html, planes.html,
-detalle-plan.html y carrito.html, porque en todas esas
-páginas existe el contador del header y/o el listado del
-carrito. Mantiene la misma lógica de tu proyecto original
-(arreglo + localStorage con JSON.stringify/JSON.parse).
-*/
+
 
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
@@ -117,16 +110,7 @@ if (vaciarCarritoBtn) {
   });
 }
 
-// =====================================================
-// BOTÓN "CONFIRMAR Y AGENDAR" (sin ventana emergente)
-// -----------------------------------------------------
-// "btn-contratar" es un <a href="agendar-cita.html">, o sea que
-// por defecto SOLO navega a la otra página, como cualquier link
-// normal. Este script únicamente intercepta el clic (con
-// preventDefault) cuando el carrito está vacío, para avisar con
-// un mensaje en pantalla en vez de un alert(). Si el carrito
-// tiene productos, no se hace nada y el navegador sigue el link.
-// =====================================================
+
 const btnContratar = document.getElementById("btn-contratar");
 if (btnContratar) {
   btnContratar.addEventListener("click", (evento) => {
@@ -140,10 +124,7 @@ if (btnContratar) {
       return;
     }
 
-    // Si no hay sesión iniciada, en vez de dejarlo avanzar a
-    // agendar-cita.html lo mandamos a login.html. Guardamos en
-    // "destinoTrasLogin" que debe volver a agendar-cita.html
-    // apenas inicie sesión (ver login.js).
+    
     if (localStorage.getItem("sesionActiva") !== "true") {
       evento.preventDefault();
       localStorage.setItem("destinoTrasLogin", "agendar-cita.html");
