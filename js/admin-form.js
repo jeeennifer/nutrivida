@@ -1,6 +1,6 @@
 /* crear o editar un plan desde
-// admin-plan-form.html. Si la URL trae "?id=", se precargan
-// los datos de ese plan (modo edición); si no, es un plan nuevo.
+admin-plan-form.html. Si la URL trae "?id=", se precargan
+los datos de ese plan (modo edición); si no, es un plan nuevo.
 */
 
 const formPlan = document.getElementById("form-plan");

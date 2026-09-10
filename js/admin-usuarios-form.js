@@ -1,7 +1,7 @@
 /* crear o editar un usuario desde
-// admin-usuario-form.html. Reutiliza las mismas funciones de
-// validaciones.js que usa registro.js (RUN, correo), para no
-// duplicar las reglas de negocio.
+admin-usuario-form.html. Reutiliza las mismas funciones de
+validaciones.js que usa registro.js (RUN, correo), para no
+duplicar las reglas de negocio.
 */
 
 const formUsuario = document.getElementById("form-usuario");

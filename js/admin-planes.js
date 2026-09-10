@@ -1,5 +1,5 @@
 /*
-// (listado de todos los planes, con acciones editar/eliminar).
+(listado de todos los planes, con acciones editar/eliminar).
 */
 
 const cuerpoTablaPlanes = document.getElementById("cuerpo-tabla-planes");
