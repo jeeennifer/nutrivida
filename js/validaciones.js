@@ -62,8 +62,7 @@ function validarRun(valor) {
 }
 
 
-// Helper genérico para mostrar/ocultar un mensaje de error
-// junto a un campo, reutilizado por todos los formularios.
+
 function mostrarErrorCampo(idSpanError, mensaje) {
   const span = document.getElementById(idSpanError);
   if (!span) return;
@@ -72,8 +71,7 @@ function mostrarErrorCampo(idSpanError, mensaje) {
 }
 
 
-// Helper para mostrar el mensaje final del formulario
-// (reemplaza a alert(): es un <p> dentro de la misma página).
+
 function mostrarMensajeFormulario(idParrafo, texto, tipo) {
   const parrafo = document.getElementById(idParrafo);
   if (!parrafo) return;
