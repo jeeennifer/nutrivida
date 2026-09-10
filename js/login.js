@@ -24,8 +24,23 @@ if (formularioLogin) {
 
     mostrarMensajeFormulario("mensaje-login", "¡Sesión iniciada correctamente!", "exito");
 
-    // Si el paciente venía del carrito a confirmar una cita, lo
-    // llevamos de vuelta a terminar ese proceso; si no, al inicio.
+     // ---------- Redirección según el correo ----------
+    // Regla del negocio: existe un único administrador, identificado
+    // por este correo exacto. Si es él quien inició sesión, lo mandamos
+    // directo al panel de administración y listo (no sigue el flujo
+    // normal de "volver al carrito").
+    const esAdministrador = inputEmail.value.trim().toLowerCase() === "admin@gmail.com";
+
+    if (esAdministrador) {
+      setTimeout(() => {
+        window.location.href = "admin-home.html";
+      }, 600);
+      return;
+    }
+
+    // Cualquier otro correo (paciente/nutricionista) sigue el flujo
+    // normal: si venía del carrito a confirmar una cita, vuelve a
+    // terminar ese proceso; si no, va al inicio de la tienda.
     const destinoGuardado = localStorage.getItem("destinoTrasLogin");
     localStorage.removeItem("destinoTrasLogin");
 
