@@ -1,6 +1,3 @@
-// =====================================================
-// Responsabilidad única: la tabla de admin-usuarios.html.
-// =====================================================
 
 const cuerpoTablaUsuarios = document.getElementById("cuerpo-tabla-usuarios");
 

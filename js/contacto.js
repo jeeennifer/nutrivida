@@ -1,9 +1,8 @@
-// =====================================================
-// Responsabilidad única: la página contacto.html.
-// Antes mostraba alert("¡Gracias por escribirnos!..."). Ahora
-// el mensaje de éxito se muestra en la misma página, dentro
-// de #mensaje-contacto, sin ninguna ventana emergente.
-// =====================================================
+/*
+Antes mostraba alert("¡Gracias por escribirnos!..."). Ahora
+el mensaje de éxito se muestra en la misma página, dentro 
+de #mensaje-contacto, sin ventana emergente.
+*/
 
 const formularioContacto = document.getElementById("formulario-contacto");
 

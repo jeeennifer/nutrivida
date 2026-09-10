@@ -1,13 +1,10 @@
-// =====================================================
-// Responsabilidad única: la página "agendar-cita.html", a la
-// que se llega al presionar "Confirmar y agendar" en el
-// carrito. Aquí el paciente elige fecha y hora con el
-// calendario nativo del navegador (<input type="date">,
-// no requiere ninguna librería) y confirma su cita.
-// Al enviar el formulario, se guarda la cita, se vacía el
-// carrito y se navega a cita-confirmada.html: ningún alert()
-// ni confirm() en todo el flujo.
-// =====================================================
+/* pagina a la que se llega al presionar "Confirmar y agendar" en el
+carrito. Aquí el paciente elige fecha y hora con el
+calendario nativo del navegador  y confirma su cita.
+Al enviar el formulario, se guarda la cita, se vacía el
+carrito y se navega a cita-confirmada.html: ningún alert()
+ni confirm() en todo el flujo.
+*/
 
 const listaResumenCita = document.getElementById("lista-resumen-cita");
 const formAgendar = document.getElementById("form-agendar-cita");
@@ -20,7 +17,7 @@ if (carrito.length === 0) {
   window.location.href = "planes.html";
 }
 
-// ---------- Mostrar el resumen de lo que se va a agendar ----------
+// Mostrar el resumen de lo que se va a agendar
 if (listaResumenCita) {
   listaResumenCita.innerHTML = carrito
     .map(
@@ -40,13 +37,13 @@ if (listaResumenCita) {
     </div>`;
 }
 
-// ---------- Calendario: no se pueden elegir fechas pasadas ----------
+// Calendario: no se pueden elegir fechas pasadas 
 if (inputFecha) {
   const hoy = new Date().toISOString().split("T")[0]; // formato AAAA-MM-DD que pide <input type="date">
   inputFecha.min = hoy;
 }
 
-// ---------- Validación y confirmación (sin popups) ----------
+// Validación y confirmación 
 if (formAgendar) {
   formAgendar.addEventListener("submit", (evento) => {
     evento.preventDefault();

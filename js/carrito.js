@@ -1,11 +1,11 @@
-// =====================================================
-// Responsabilidad única: todo lo relacionado al carrito
-// de compras ("Mis Horas"). Se usa en index.html, planes.html,
-// detalle-plan.html y carrito.html, porque en todas esas
-// páginas existe el contador del header y/o el listado del
-// carrito. Mantiene la misma lógica de tu proyecto original
-// (arreglo + localStorage con JSON.stringify/JSON.parse).
-// =====================================================
+/*
+todo lo relacionado al carrito
+de compras ("Mis Horas"). Se usa en index.html, planes.html,
+detalle-plan.html y carrito.html, porque en todas esas
+páginas existe el contador del header y/o el listado del
+carrito. Mantiene la misma lógica de tu proyecto original
+(arreglo + localStorage con JSON.stringify/JSON.parse).
+*/
 
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
