@@ -37,7 +37,10 @@ function activarBotonesAgendar() {
   document.querySelectorAll(".producto button[data-id]").forEach((boton) => {
     boton.addEventListener("click", (evento) => {
       evento.preventDefault();
-      agregarAlCarrito(Number(boton.dataset.id));
+      const agregado = agregarAlCarrito(Number(boton.dataset.id));
+      if (!agregado) {
+        return;
+      }
 
       // Magia del panel lateral
       const panel = document.getElementById("carrito-lateral");
@@ -104,8 +107,11 @@ if (contenedorDetalle) {
     `;
 
     document.getElementById("btn-agendar-detalle").addEventListener("click", () => {
-      agregarAlCarrito(plan.id);
-      window.location.href = "carrito.html";
+      const agregado = agregarAlCarrito(plan.id);
+
+      if (agregado) {
+        window.location.href = "carrito.html";
+      }
     });
   }
 }

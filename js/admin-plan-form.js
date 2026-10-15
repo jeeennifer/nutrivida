@@ -8,6 +8,7 @@ const inputEtiquetaPlan = document.getElementById("etiqueta-plan");
 const inputDescripcionPlan = document.getElementById("descripcion-plan");
 const inputPrecioPlan = document.getElementById("precio-plan");
 const inputStockPlan = document.getElementById("stock-plan");
+const inputIncluyePlan = document.getElementById("incluye-plan");
 
 const parametros = new URLSearchParams(window.location.search);
 const idAEditar = parametros.get("id") ? Number(parametros.get("id")) : null;
@@ -21,6 +22,7 @@ if (idAEditar) {
     inputDescripcionPlan.value = planExistente.descripcion;
     inputPrecioPlan.value = planExistente.precio;
     inputStockPlan.value = planExistente.stock;
+    inputIncluyePlan.value = planExistente.incluye.join("\n");
   }
 }
 
@@ -32,8 +34,9 @@ formPlan.addEventListener("submit", (evento) => {
   const errorPrecio = inputPrecioPlan.value === "" || Number(inputPrecioPlan.value) < 0
     ? "El precio es obligatorio y no puede ser negativo."
     : "";
-  const errorStock = inputStockPlan.value === "" || Number(inputStockPlan.value) < 0
-    ? "El stock es obligatorio y no puede ser negativo."
+  const stock = Number(inputStockPlan.value);
+  const errorStock = inputStockPlan.value === "" || !Number.isInteger(stock) || stock < 0
+    ? "Los cupos deben ser un número entero igual o mayor a cero."
     : "";
 
   mostrarErrorCampo("error-nombre-plan", errorNombre);
@@ -48,13 +51,25 @@ formPlan.addEventListener("submit", (evento) => {
 
   const planes = obtenerPlanes();
 
+  const incluye = [];
+  const lineas = inputIncluyePlan.value.split("\n");
+
+  for (const linea of lineas) {
+    const texto = linea.trim();
+
+    if (texto !== "") {
+      incluye.push(texto);
+    }
+  }
+
   const datosPlan = {
     nombre: inputNombrePlan.value.trim(),
     etiqueta: inputEtiquetaPlan.value.trim(),
     descripcion: inputDescripcionPlan.value.trim(),
     descripcionLarga: inputDescripcionPlan.value.trim(),
     precio: Number(inputPrecioPlan.value),
-    stock: Number(inputStockPlan.value)
+    stock: Number(inputStockPlan.value),
+    incluye: incluye
   };
 
   if (idAEditar) {
@@ -65,7 +80,6 @@ formPlan.addEventListener("submit", (evento) => {
     planes.push({
       id: nuevoId,
       ...datosPlan,
-      incluye: [],
       imagen: "assets/img/plan-consulta.jpg" // imagen genérica por defecto para planes nuevos
     });
   }

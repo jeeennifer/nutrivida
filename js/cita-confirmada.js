@@ -4,8 +4,14 @@ const contenedorCitaConfirmada = document.getElementById("detalle-cita-confirmad
 
 if (contenedorCitaConfirmada) {
   const cita = JSON.parse(localStorage.getItem("ultimaCita"));
+  const haySesionConfirmacion =
+    localStorage.getItem("sesionActiva") === "true";
 
-  if (!cita) {
+  const correoActual = localStorage.getItem("correoSesion");
+
+  if (!haySesionConfirmacion || !correoActual) {
+  window.location.href = "login.html";
+  } else if (!cita || cita.correoPaciente !== correoActual) {
     // Si alguien entra directo a esta URL sin haber agendado nada.
     contenedorCitaConfirmada.innerHTML = `
       <p>No encontramos una cita reciente.</p>
