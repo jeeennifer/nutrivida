@@ -54,6 +54,7 @@ const USUARIOS_INICIALES = [
     nombre: "Administrador",
     apellidos: "NutriVida",
     correo: "admin@gmail.com",
+    password: "Admin123",
     tipo: "Administrador"
   },
   {

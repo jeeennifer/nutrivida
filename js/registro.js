@@ -42,13 +42,33 @@ if (formularioRegistro) {
 
     // Se guarda el nuevo paciente junto a los demás usuarios.
     const usuarios = obtenerUsuarios();
+    const run = inputRun.value.trim().toUpperCase();
+    const correo = inputEmail.value.trim().toLowerCase();
+
+    const usuarioExistente = usuarios.find((usuario) => {
+      return usuario.correo.trim().toLowerCase() === correo ||
+            usuario.run === run;
+    });
+
+    if (usuarioExistente) {
+      mostrarMensajeFormulario(
+        "mensaje-registro",
+        "Ya existe una cuenta con ese correo o RUN.",
+        "error"
+      );
+      return;
+    }
+
+    // Guardar el nuevo paciente.
     usuarios.push({
-      run: inputRun.value.trim().toUpperCase(),
+      run: run,
       nombre: inputNombre.value.trim(),
       apellidos: inputApellidos.value.trim(),
-      correo: inputEmail.value.trim(),
+      correo: correo,
+      password: inputPassword.value,
       tipo: "Paciente"
     });
+
     guardarUsuarios(usuarios);
 
     mostrarMensajeFormulario("mensaje-registro", "¡Cuenta creada con éxito! Ahora puedes iniciar sesión.", "exito");

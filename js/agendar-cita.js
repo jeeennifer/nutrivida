@@ -5,9 +5,15 @@ const formAgendar = document.getElementById("form-agendar-cita");
 const inputFecha = document.getElementById("fecha-cita");
 const inputHora = document.getElementById("hora-cita");
 
-// Si no hay nada en el carrito, no tiene sentido agendar: se
-// redirige de vuelta al catálogo de planes.
-if (carrito.length === 0) {
+// Primero comprueba la sesión. Si falta, lleva al login y guarda dónde debe regresar
+// Si hay sesión pero el carrito está vacío, vuelve al catálogo.
+if (
+  localStorage.getItem("sesionActiva") !== "true" ||
+  !localStorage.getItem("correoSesion")
+) {
+  localStorage.setItem("destinoTrasLogin", "agendar-cita.html");
+  window.location.href = "login.html";
+} else if (carrito.length === 0) {
   window.location.href = "planes.html";
 }
 
@@ -42,6 +48,17 @@ if (formAgendar) {
   formAgendar.addEventListener("submit", (evento) => {
     evento.preventDefault();
 
+    // segunda comprobación revisa la sesión nuevamente al pulsar «Confirmar». 
+    // El return detiene el proceso si ya se cerró.
+    if (
+      localStorage.getItem("sesionActiva") !== "true" ||
+      !localStorage.getItem("correoSesion")
+    ) {
+      localStorage.setItem("destinoTrasLogin", "agendar-cita.html");
+      window.location.href = "login.html";
+      return;
+    }
+
     const errorFecha = inputFecha.value === "" ? "Selecciona un día para tu cita." : "";
     const errorHora = inputHora.value === "" ? "Selecciona un horario." : "";
 
@@ -53,13 +70,49 @@ if (formAgendar) {
       return;
     }
 
+    if (carrito.length === 0) {
+      mostrarMensajeFormulario(
+        "mensaje-agendar",
+        "Tu carrito está vacío.",
+        "error"
+      );
+      return;
+    }
+
+    const planes = obtenerPlanes();
+
+    // Comprobar todos los planes antes de descontar cupos.
+    for (const item of carrito) {
+      const plan = planes.find((p) => p.id === item.id);
+
+      if (!plan || item.cantidad > plan.stock) {
+        mostrarMensajeFormulario(
+          "mensaje-agendar",
+          "Un plan ya no está disponible o no tiene cupos suficientes. Revisa Mis Horas.",
+          "error"
+        );
+        return;
+      }
+    }
+
+    // Todos los planes tienen cupos: descontar las cantidades.
+    for (const item of carrito) {
+      const plan = planes.find((p) => p.id === item.id);
+      plan.stock = plan.stock - item.cantidad;
+    }
+
+    guardarPlanes(planes);
+
+
+
     // Guardamos la cita confirmada para poder mostrarla en la
     // siguiente página (cita-confirmada.html) sin volver a preguntar nada.
     const citaConfirmada = {
       planes: carrito,
       total: carrito.reduce((acc, item) => acc + item.precio * item.cantidad, 0),
       fecha: inputFecha.value,
-      hora: inputHora.value
+      hora: inputHora.value,
+      correoPaciente: localStorage.getItem("correoSesion")
     };
     localStorage.setItem("ultimaCita", JSON.stringify(citaConfirmada));
 

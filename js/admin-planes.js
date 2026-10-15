@@ -27,10 +27,22 @@ function dibujarTablaPlanes() {
 
   document.querySelectorAll("#cuerpo-tabla-planes button[data-id]").forEach((boton) => {
     boton.addEventListener("click", () => {
-      const listaActualizada = obtenerPlanes().filter((p) => p.id !== Number(boton.dataset.id));
+      const id = Number(boton.dataset.id);
+
+      const listaActualizada = obtenerPlanes().filter((p) => p.id !== id);
       guardarPlanes(listaActualizada);
+
+      const carritoGuardado =
+        JSON.parse(localStorage.getItem("carrito")) || [];
+
+      const carritoActualizado =
+        carritoGuardado.filter((item) => item.id !== id);
+
+      localStorage.setItem("carrito", JSON.stringify(carritoActualizado));
+
       dibujarTablaPlanes();
-    });
+        });
+        // Quitar el plan de la lista de planes y del carrito.
   });
 }
 

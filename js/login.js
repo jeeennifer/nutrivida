@@ -19,13 +19,45 @@ if (formularioLogin) {
     }
 
     // simulación de sesión solo en el navegador (localStorage)
+    const correo = inputEmail.value.trim().toLowerCase();
+    const usuarios = obtenerUsuarios();
+
+    // Buscar la cuenta por su correo.
+    const usuario = usuarios.find((usuario) => {
+      return usuario.correo.trim().toLowerCase() === correo;
+    });
+
+    if (!usuario) {
+      mostrarMensajeFormulario(
+        "mensaje-login",
+        "No existe una cuenta con ese correo. Regístrate para continuar.",
+        "error"
+      );
+      return;
+    }
+
+    // Comprobar la contraseña guardada durante el registro.
+    if (usuario.password !== inputPassword.value) {
+      mostrarMensajeFormulario(
+        "mensaje-login",
+        "La contraseña es incorrecta.",
+        "error"
+      );
+      return;
+    }
+
+    // Iniciar la sesión después de comprobar los datos.
     localStorage.setItem("sesionActiva", "true");
-    localStorage.setItem("correoSesion", inputEmail.value.trim());
+    localStorage.setItem("correoSesion", usuario.correo);
+    localStorage.setItem("nombreSesion", usuario.nombre);
 
-    mostrarMensajeFormulario("mensaje-login", "¡Sesión iniciada correctamente!", "exito");
+    mostrarMensajeFormulario(
+      "mensaje-login",
+      "¡Sesión iniciada correctamente!",
+      "exito"
+    );
 
-     
-    const esAdministrador = inputEmail.value.trim().toLowerCase() === "admin@gmail.com";
+    const esAdministrador = usuario.tipo === "Administrador";
 
     if (esAdministrador) {
       setTimeout(() => {
@@ -42,4 +74,5 @@ if (formularioLogin) {
       window.location.href = destinoGuardado || "index.html";
     }, 600);
   });
+  
 }

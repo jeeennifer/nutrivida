@@ -6,17 +6,53 @@ function guardarCarrito() {
   localStorage.setItem("carrito", JSON.stringify(carrito));
 }
 
+function sincronizarCarrito() {
+  // Busca cada plan por su ID y toma sus datos actuales, conservando la cantidad elegida.
+  const planes = obtenerPlanes();
+  const carritoActualizado = [];
+
+  for (const item of carrito) {
+    const planActual = planes.find((p) => p.id === item.id);
+
+    if (planActual) {
+      carritoActualizado.push({
+        ...planActual,
+        cantidad: item.cantidad
+      });
+    }
+  }
+
+  carrito = carritoActualizado;
+  guardarCarrito();
+}
+
 function agregarAlCarrito(idProducto) {
   const planElegido = obtenerPlanes().find((p) => p.id === idProducto);
+  
+  if (!planElegido) {
+    alert("Este plan ya no está disponible.");
+    return false;
+  }
+  
   const citaExistente = carrito.find((item) => item.id === idProducto);
+  const cantidadActual = citaExistente ? citaExistente.cantidad : 0;
+
+  if (cantidadActual >= planElegido.stock) {
+    alert("No quedan más cupos disponibles para este plan.");
+    return false;
+  }
+
 
   if (citaExistente) {
     citaExistente.cantidad++;
   } else {
     carrito.push({ ...planElegido, cantidad: 1 });
   }
+
   guardarCarrito();
   actualizarCarrito();
+
+  return true;
 }
 
 
@@ -64,12 +100,7 @@ function actualizarCarrito() {
 
   document.querySelectorAll(".btn-sumar").forEach((boton) => {
     boton.addEventListener("click", () => {
-      const item = carrito.find((p) => p.id === Number(boton.dataset.id));
-      if (item) {
-        item.cantidad++;
-        guardarCarrito();
-        actualizarCarrito();
-      }
+      agregarAlCarrito(Number(boton.dataset.id));
     });
   });
 
@@ -130,11 +161,10 @@ if (btnContratar) {
       localStorage.setItem("destinoTrasLogin", "agendar-cita.html");
       window.location.href = "login.html";
     }
-    // Si hay carrito y sesión, no hacemos nada más: el <a> sigue
-    // su comportamiento normal y navega solo a agendar-cita.html.
+    
   });
 }
 
-// Se ejecuta apenas carga cualquier página que incluya este script,
-// para que el contador del header siempre esté al día.
+// primero actualizamos los datos guardados y después dibujamos el carrito y calculamos su total.
+sincronizarCarrito();
 actualizarCarrito();
