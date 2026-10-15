@@ -40,7 +40,7 @@ header {
   position: sticky;
   top: 0;
   z-index: 10;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 .encabezado {
@@ -87,6 +87,7 @@ nav a:hover {
   cursor: pointer;
   font-weight: bold;
   font-size: 1rem;
+  text-decoration: none;
 }
 
 /* =========================
@@ -157,7 +158,8 @@ nav a:hover {
   font-size: 0.9rem;
 }
 
-.boton, .boton-ingresar {
+.boton,
+.boton-ingresar {
   display: inline-block;
   border: none;
   background: #3d8c53;
@@ -174,7 +176,8 @@ nav a:hover {
   padding: 8px 16px;
 }
 
-.boton:hover, .boton-ingresar:hover {
+.boton:hover,
+.boton-ingresar:hover {
   background: #2e6b3f;
 }
 
@@ -196,6 +199,16 @@ nav a:hover {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
+}
+
+.grilla-admin {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.grilla-admin .producto-contenido {
+  text-align: center;
 }
 
 .producto {
@@ -239,6 +252,11 @@ nav a:hover {
   margin-bottom: 15px;
 }
 
+.producto-contenido .boton {
+  width: 100%;
+  margin-top: 10px;
+}
+
 .etiqueta-plan {
   font-size: 0.8rem;
   margin-bottom: 5px;
@@ -246,9 +264,8 @@ nav a:hover {
 
 .descripcion-plan {
   margin-bottom: 15px;
+  flex-grow: 1;
 }
-
-
 
 /* =========================
    DETALLE DE PLAN
@@ -271,7 +288,7 @@ nav a:hover {
 .detalle-imagen img {
   width: 100%;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .precio-detalle {
@@ -313,6 +330,21 @@ nav a:hover {
   margin-bottom: 15px;
 }
 
+.item-carrito-info {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.item-carrito-acciones {
+  text-align: right;
+}
+
+.item-carrito-acciones p {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
 .item-carrito strong {
   font-size: 1.2rem;
   display: block;
@@ -338,6 +370,18 @@ nav a:hover {
   margin-bottom: 20px;
 }
 
+.carrito-resumen .boton {
+  width: 100%;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.carrito-resumen small {
+  display: block;
+  margin-top: 10px;
+  color: #555555;
+}
+
 .precio-total {
   font-size: 1.5rem;
   font-weight: bold;
@@ -351,30 +395,27 @@ nav a:hover {
    FOOTER MINIMALISTA
 */
 .footer-minimalista {
-  background-color: #f4f9f5; 
-  padding: 50px 20px;        
+  background-color: #f4f9f5;
+  padding: 50px 20px;
   text-align: center;
-  border-top: 1px solid #eeeeee; 
+  border-top: 1px solid #eeeeee;
   margin-top: 40px;
 }
 
 .footer-minimalista p {
-  color: #000000;            
+  color: #000000;
   font-size: 1rem;
-  margin: 0 0 10px 0;       
+  margin: 0 0 10px 0;
   font-weight: normal;
 }
 
-/* Le quitamos el margen a la última línea para que quede perfectamente centrado */
 .footer-minimalista p:last-child {
   margin-bottom: 0;
 }
 
 /* 
-   FORMULARIOS (Login y Contacto)
+   FORMULARIOS (Login, Registro, Contacto y Admin)
 */
-
-/* El contenedor blanco que abraza al formulario */
 .form-contenedor {
   max-width: 500px;
   margin: 0 auto;
@@ -382,15 +423,13 @@ nav a:hover {
   padding: 40px;
   border-radius: 12px;
   border: 1px solid #eeeeee;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
 }
 
-/* Espaciado entre cada campo (ej: entre Correo y Contraseña) */
 .grupo-form {
   margin-bottom: 20px;
 }
 
-/* Estilo para los textos (labels) arriba de cada input */
 .grupo-form label {
   display: block;
   font-weight: bold;
@@ -398,28 +437,38 @@ nav a:hover {
   color: #222222;
 }
 
-/* Estilo para las cajas de texto e inputs */
 .grupo-form input,
-.grupo-form textarea {
+.grupo-form textarea,
+.grupo-form select {
   width: 100%;
   padding: 12px;
   border: 1px solid #cccccc;
   border-radius: 6px;
   font-size: 1rem;
   font-family: inherit;
+  background: #ffffff;
   transition: border-color 0.3s ease;
 }
 
-/* Solo para el textarea (mensaje), para que crezca hacia abajo y no hacia los lados */
 .grupo-form textarea {
   resize: vertical;
 }
 
-/* Efecto cuando el usuario hace clic dentro de la caja de texto */
 .grupo-form input:focus,
-.grupo-form textarea:focus {
+.grupo-form textarea:focus,
+.grupo-form select:focus {
   outline: none;
-  border-color: #3d8c53; /* Verde principal de NutriVida */
+  border-color: #3d8c53;
+}
+
+.formulario .boton {
+  width: 100%;
+  margin-top: 15px;
+}
+
+.pie-formulario {
+  margin-top: 20px;
+  text-align: center;
 }
 
 /* Estilo para los mensajes de error de validaciones.js */
@@ -431,24 +480,60 @@ nav a:hover {
 }
 
 /*
-   BLOG (reutiliza .producto/.producto-contenido
-   del catálogo para no duplicar estilos de tarjeta)
- */
+   BLOG
+*/
 .fecha-blog {
   font-size: 0.85rem;
   color: #777777;
   margin-bottom: 8px;
 }
 
+.meta-blog {
+  font-size: 0.8rem;
+  color: #888888;
+  margin-bottom: 12px;
+}
+
+.categoria-blog {
+  border: 1px solid #dddddd;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.enlace-blog {
+  color: #333333;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.enlace-blog:hover {
+  color: #3d8c53;
+}
+
+.articulo-blog {
+  max-width: 800px;
+}
+
+.articulo-blog img {
+  width: 100%;
+  border-radius: 12px;
+  margin: 20px 0;
+}
+
+.articulo-blog p {
+  margin-bottom: 15px;
+}
+
 /* 
    MENSAJES DE FORMULARIO SIN VENTANA EMERGENTE
- */
+*/
 .mensaje-formulario {
   margin-top: 15px;
   padding: 12px 16px;
   border-radius: 6px;
   font-weight: bold;
-  display: none; /* se muestra por JS solo cuando hay contenido */
+  display: none;
 }
 
 .mensaje-formulario.exito {
@@ -499,7 +584,15 @@ nav a:hover {
   margin-bottom: 10px;
 }
 
-/* Circulo con iniciales, usado cuando no hay foto de perfil real */
+.confirmacion-caja .resumen-cita {
+  text-align: left;
+  margin-top: 25px;
+}
+
+.confirmacion-caja .boton {
+  margin-top: 25px;
+}
+
 .avatar-iniciales {
   display: flex;
   align-items: center;
@@ -512,9 +605,7 @@ nav a:hover {
 
 /* 
    PANEL ADMINISTRADOR (minimalista)
-   Reutiliza el mismo header/footer del resto del sitio;
-   solo se agregan estilos para tablas y acciones.
- */
+*/
 .tabla-admin {
   width: 100%;
   border-collapse: collapse;
@@ -545,46 +636,7 @@ nav a:hover {
   font-size: 0.9rem;
 }
 
-/* 
-   RESPONSIVE (3 puntos de quiebre: escritorio, tablet, celular)
- */
-
-/* Tablet: de 3 a 2 columnas */
-@media (max-width: 1024px) {
-  .grilla-productos,
-  .grilla-equipo {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* Celular: todo a 1 columna */
-@media (max-width: 768px) {
-  .encabezado {
-    flex-direction: column;
-    padding: 20px 0;
-  }
-  nav ul {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .hero-grid, .grilla-productos, .detalle-grid, .carrito-grid,
-  .footer-grid, .grilla-equipo {
-    grid-template-columns: 1fr;
-  }
-  .hero-imagen {
-    order: -1; /* Mueve la imagen arriba en celular */
-  }
-  .tabla-admin {
-    font-size: 0.85rem;
-  }
-  .tabla-admin th,
-  .tabla-admin td {
-    padding: 8px 6px;
-  }
-}
-
-/* compra carrito*/
-
+/* compra carrito */
 .control-cantidad {
   display: flex;
   align-items: center;
@@ -606,7 +658,6 @@ nav a:hover {
   background: #dddddd;
 }
 
-/* Imagen dentro del carrito */
 .img-carrito {
   width: 80px;
   height: 80px;
@@ -617,13 +668,18 @@ nav a:hover {
 
 /* 
    PÁGINA NOSOTROS
- */
+*/
 .seccion-texto {
   max-width: 800px;
   margin: 0 auto 50px auto;
   text-align: center;
   font-size: 1.1rem;
   color: #555;
+}
+
+.titulo-centrado {
+  text-align: center;
+  margin-top: 20px;
 }
 
 .grilla-equipo {
@@ -634,13 +690,21 @@ nav a:hover {
   margin-bottom: 60px;
 }
 
+.grilla-desarrolladores {
+  grid-template-columns: repeat(3, 1fr);
+}
+
 .tarjeta-equipo {
   background: #f4f9f5;
   border: 1px solid #eeeeee;
   border-radius: 12px;
   padding: 30px 20px;
   text-align: center;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+}
+
+.grilla-desarrolladores .tarjeta-equipo {
+  border-color: #cce0d2;
 }
 
 .foto-perfil {
@@ -667,36 +731,115 @@ nav a:hover {
    CARRITO LATERAL (OFF-CANVAS)
 */
 .overlay-carrito {
-  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(0,0,0,0.5); z-index: 99;
-  visibility: hidden; opacity: 0; transition: 0.3s ease;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 99;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.3s ease;
 }
+
 .overlay-carrito.activo {
-  visibility: visible; opacity: 1;
+  visibility: visible;
+  opacity: 1;
 }
 
 .carrito-lateral {
-  position: fixed; top: 0; right: -400px; /* Escondido afuera */
-  width: 400px; max-width: 100%; height: 100vh;
-  background: #ffffff; box-shadow: -4px 0 15px rgba(0,0,0,0.1);
-  z-index: 100; display: flex; flex-direction: column;
+  position: fixed;
+  top: 0;
+  right: -400px;
+  width: 400px;
+  max-width: 100%;
+  height: 100vh;
+  background: #ffffff;
+  box-shadow: -4px 0 15px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
   transition: right 0.3s ease;
 }
+
 .carrito-lateral.activo {
-  right: 0; /* Se desliza hacia adentro */
+  right: 0;
 }
 
 .carrito-lateral-header {
-  padding: 20px; border-bottom: 1px solid #eeeeee;
-  display: flex; justify-content: space-between; align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #eeeeee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
+
 .btn-cerrar {
-  background: none; border: none; font-size: 2rem;
-  cursor: pointer; color: #333;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #333;
 }
+
 .carrito-lateral-body {
-  padding: 20px; flex-grow: 1; overflow-y: auto;
+  padding: 20px;
+  flex-grow: 1;
+  overflow-y: auto;
 }
+
 .carrito-lateral-footer {
-  padding: 20px; border-top: 1px solid #eeeeee; background: #f9f9f9;
+  padding: 20px;
+  border-top: 1px solid #eeeeee;
+  background: #f9f9f9;
+}
+
+.carrito-lateral-footer .boton {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+/* 
+   RESPONSIVE (3 puntos de quiebre: escritorio, tablet, celular)
+*/
+@media (max-width: 1024px) {
+  .grilla-productos,
+  .grilla-equipo,
+  .grilla-desarrolladores {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .encabezado {
+    flex-direction: column;
+    padding: 20px 0;
+  }
+  nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .hero-grid {
+    flex-direction: column;
+  }
+  .grilla-productos,
+  .grilla-admin,
+  .detalle-grid,
+  .carrito-grid,
+  .footer-grid,
+  .grilla-equipo,
+  .grilla-desarrolladores {
+    grid-template-columns: 1fr;
+  }
+  .hero-imagen {
+    order: -1;
+  }
+  .tabla-admin {
+    font-size: 0.85rem;
+  }
+  .tabla-admin th,
+  .tabla-admin td {
+    padding: 8px 6px;
+  }
 }

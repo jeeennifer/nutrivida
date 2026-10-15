@@ -1,21 +1,33 @@
-
-
-function crearTarjetaPlan(plan) {
+function crearTarjetaPlan(plan, mostrarBotonAgendar = true) {
   const tarjeta = document.createElement("article");
   tarjeta.classList.add("producto");
 
-  
+
+  let botonesHTML = "";
+
+  if (mostrarBotonAgendar) {
+    // ESTAMOS EN PLANES.HTML: Mostramos los dos botones
+    botonesHTML = `
+      <a href="detalle-plan.html?id=${plan.id}" class="boton boton-secundario">Ver detalle</a>
+      <button class="boton" data-id="${plan.id}">Agendar</button>
+    `;
+  } else {
+    // ESTAMOS EN INDEX.HTML: Mostramos solo "Ver detalle"
+    botonesHTML = `
+      <a href="detalle-plan.html?id=${plan.id}" class="boton boton-secundario">Ver detalle</a>
+    `;
+  }
+
+
 
   tarjeta.innerHTML = `
-    <a href="detalle-plan.html?id=${plan.id}">
       <img src="${plan.imagen}" alt="${plan.nombre}">
-    </a>
     <div class="producto-contenido">
       <p class="subtitulo etiqueta-plan">${plan.etiqueta}</p>
       <h3>${plan.nombre}</h3>
       <p class="descripcion-plan">${plan.descripcion}</p>
       <p class="precio">$${plan.precio.toLocaleString("es-CL")}</p>
-      <button class="boton" data-id="${plan.id}" style="width: 100%; margin-top: 10px;">Agendar</button>
+      ${botonesHTML}
     </div>
   `;
   return tarjeta;
@@ -24,13 +36,13 @@ function crearTarjetaPlan(plan) {
 function activarBotonesAgendar() {
   document.querySelectorAll(".producto button[data-id]").forEach((boton) => {
     boton.addEventListener("click", (evento) => {
-      evento.preventDefault(); 
+      evento.preventDefault();
       agregarAlCarrito(Number(boton.dataset.id));
-      
+
       // Magia del panel lateral
       const panel = document.getElementById("carrito-lateral");
       const overlay = document.getElementById("overlay-carrito");
-      if(panel && overlay) {
+      if (panel && overlay) {
         panel.classList.add("activo");
         overlay.classList.add("activo");
       }
@@ -45,19 +57,19 @@ document.addEventListener("click", (e) => {
     document.getElementById("overlay-carrito").classList.remove("activo");
   }
 });
-// ---------- HOME: 3 planes destacados ----------
+
+// ---------- HOME: 3 planes destacados (solo vitrina informativa) ----------
 const grillaDestacados = document.getElementById("grilla-destacados");
 if (grillaDestacados) {
   obtenerPlanes()
     .slice(0, 3)
-    .forEach((plan) => grillaDestacados.appendChild(crearTarjetaPlan(plan)));
-  activarBotonesAgendar();
+    .forEach((plan) => grillaDestacados.appendChild(crearTarjetaPlan(plan, false)));
 }
 
-// ---------- PLANES: listado completo ----------
+// ---------- PLANES: listado completo (con botón Agendar) ----------
 const grillaProductos = document.getElementById("grilla-productos");
 if (grillaProductos) {
-  obtenerPlanes().forEach((plan) => grillaProductos.appendChild(crearTarjetaPlan(plan)));
+  obtenerPlanes().forEach((plan) => grillaProductos.appendChild(crearTarjetaPlan(plan, true)));
   activarBotonesAgendar();
 }
 
@@ -69,8 +81,6 @@ if (contenedorDetalle) {
   const plan = obtenerPlanes().find((p) => p.id === idBuscado);
 
   if (!plan) {
-    // Si entran sin id o con uno inexistente, se redirige al catálogo
-    // en vez de mostrar una página vacía o rota.
     window.location.href = "planes.html";
   } else {
     document.title = `${plan.nombre} - NutriVida`;

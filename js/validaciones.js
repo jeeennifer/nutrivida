@@ -67,7 +67,6 @@ function mostrarErrorCampo(idSpanError, mensaje) {
   const span = document.getElementById(idSpanError);
   if (!span) return;
   span.textContent = mensaje;
-  span.style.display = mensaje ? "block" : "none";
 }
 
 

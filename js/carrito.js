@@ -54,8 +54,8 @@ function actualizarCarrito() {
           </div>
         </div>
       </div>
-      <div style="text-align: right;">
-        <p style="margin-bottom: 10px; font-weight: bold;">Subtotal: $${(item.precio * item.cantidad).toLocaleString("es-CL")}</p>
+      <div class="item-carrito-acciones">
+        <p>Subtotal: $${(item.precio * item.cantidad).toLocaleString("es-CL")}</p>
         <button data-index="${index}" class="btn-eliminar">Eliminar</button>
       </div>
     `;

@@ -29,7 +29,7 @@ if (contenedorCitaConfirmada) {
       <h2>¡Tu cita fue agendada con éxito!</h2>
       <p>Te esperamos el <strong>${fechaLegible}</strong> a las <strong>${cita.hora}</strong> hrs.</p>
 
-      <div class="resumen-cita" style="text-align: left; margin-top: 25px;">
+      <div class="resumen-cita">
         <strong>Planes agendados:</strong>
         ${filas}
         <div class="fila-resumen">
@@ -38,7 +38,7 @@ if (contenedorCitaConfirmada) {
         </div>
       </div>
 
-      <a href="index.html" class="boton" style="margin-top: 25px;">Volver al inicio</a>
+      <a href="index.html" class="boton">Volver al inicio</a>
     `;
   }
 }
